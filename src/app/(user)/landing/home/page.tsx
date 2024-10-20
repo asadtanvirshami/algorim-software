@@ -4,7 +4,7 @@ type Props = {}
 
 const page = (props: Props) => {
   return (
-    <div>page</div>
+    <div className='font-[family-name:var(--font-revamped)]'>page</div>
   )
 }
 

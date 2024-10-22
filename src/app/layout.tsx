@@ -19,6 +19,11 @@ const revamped = localFont({
   weight: "100 900",
 });
 
+const codec = localFont({
+  src: "./fonts/Codec-Warm-Bold-trial.ttf",
+  variable: "--font-codec",
+  weight: "100 900",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -33,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${revamped.variable} antialiased`}
+        className={`${geistSans.variable}  {geistMono.variable} ${revamped.variable} ${codec.variable} antialiased`}
       >
         {children}
       </body>

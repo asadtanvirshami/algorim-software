@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React from "react";
 
-import logo from "../assets/a_white.png";
+import logo from "../../assets/a_white.png";
 import { useRouter } from "next/navigation";
 
 const LoadingPage = () => {

@@ -5,6 +5,8 @@ import Hero from "./hero";
 import Vision from "./vision";
 import Services from "./services";
 import Specializing from "./specializing";
+import Update from "./update";
+import Serving from "./serving";
 
 type Props = {};
 
@@ -43,10 +45,12 @@ const page = (props: Props) => {
           </div>
         </div>
         <div className="w-full">
-          <div className="container mx-auto space-y-12 md:space-y-24 lg:space-y-28">
+          <div className="container mx-auto space-y-12 md:space-y-24 lg:space-y-72">
             <Vision />
+            <Update/>
+            <Serving/>
             <Services />
-            <Specializing/>
+            <Specializing />
           </div>
         </div>
       </div>

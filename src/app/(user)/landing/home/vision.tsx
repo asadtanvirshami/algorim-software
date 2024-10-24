@@ -25,7 +25,7 @@ const Business = [
 
 const Vision = (props: Props) => {
   return (
-    <>
+    <div className="space-y-12">
       <div className="space-y-4 md:space-y-0 lg:space-y-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 p-2 w-full flex-row font-[family-name:var(--font-geist-sans)]">
         <h1 className="w-full font-semibold text-3xl md:text-5xl lg:text-6xl">
           You bring the vision, we bring the spark.
@@ -45,10 +45,10 @@ const Vision = (props: Props) => {
           </Button>
         </div>
       </div>
-      <div className="space-x-3 flex w-full dark:text-white justify-center items-center ">
+      <div className=" lg:space-x-3 lg:flex w-full dark:text-white justify-center items-center ">
         {Business.map((item) => {
           return (
-            <div className="border font-[family-name:var(--font-geist-sans)] h-[140px] flex-col space-y-3 dark:bg-black p-5 rounded-md">
+            <div className="border mt-4 font-[family-name:var(--font-geist-sans)] hflex-col space-y-3 dark:bg-black p-5 h-fit rounded-md">
               {item.icon}
               <h2 className="font-semibold text-xl">{item.title}</h2>
               <article>{item.description}</article>
@@ -56,7 +56,7 @@ const Vision = (props: Props) => {
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 

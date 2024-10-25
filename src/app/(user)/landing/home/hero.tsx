@@ -2,7 +2,6 @@
 import React from "react";
 
 const Hero = () => {
-  const words = ["better", "cute", "beautiful", "modern"];
   return (
     <div>
       <main className="flex min-h-screen flex-col items-center justify-between p-24">

@@ -51,7 +51,10 @@ const Navbar = () => {
       <nav className="justify-around hidden lg:flex space-x-1 rounded-lg max-w-full border font-[family-name:var(--font-geist-sans)]">
         {Menu.map(({ name, href }: MenuProps) => {
           return (
-            <ul className="flex justify-around font-semibold mx-2 p-2 rounded-md transition duration-500">
+            <ul
+              key={name}
+              className="flex justify-around font-semibold mx-2 p-2 rounded-md transition duration-500"
+            >
               <Link href={href}> {name}</Link>
             </ul>
           );

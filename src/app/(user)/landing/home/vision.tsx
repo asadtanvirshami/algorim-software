@@ -48,7 +48,7 @@ const Vision = (props: Props) => {
       <div className=" lg:space-x-3 lg:flex w-full dark:text-white justify-center items-center ">
         {Business.map((item) => {
           return (
-            <div className="border mt-4 font-[family-name:var(--font-geist-sans)] hflex-col space-y-3 dark:bg-black p-5 h-fit rounded-md">
+            <div key={item.title} className="border mt-4 font-[family-name:var(--font-geist-sans)] hflex-col space-y-3 dark:bg-black p-5 h-fit rounded-md">
               {item.icon}
               <h2 className="font-semibold text-xl">{item.title}</h2>
               <article>{item.description}</article>

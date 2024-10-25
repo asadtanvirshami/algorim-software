@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./navbar";
 import AnimatedCursor from "react-animated-cursor";
+import Footer from "./footer";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -45,6 +46,7 @@ const MainLayout = ({ children }: LayoutProps) => {
       />
       <Navbar />
       {children}
+      <Footer/>
     </React.Fragment>
   );
 };

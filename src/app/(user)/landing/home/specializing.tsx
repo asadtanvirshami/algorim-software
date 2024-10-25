@@ -51,7 +51,7 @@ const Specializing = (props: Props) => {
       <div className="space-x-3 flex w-full dark:text-white justify-center items-center ">
         {Industries.map((item) => {
           return (
-            <div className="border font-[family-name:var(--font-geist-sans)] h-[140px] flex-col space-y-3 dark:bg-black p-5 rounded-md">
+            <div key={item.title} className="border font-[family-name:var(--font-geist-sans)] h-[140px] flex-col space-y-3 dark:bg-black p-5 rounded-md">
               {item.icon}
               <h2 className="font-semibold text-xl">{item.title}</h2>
               <article>{item.description}</article>

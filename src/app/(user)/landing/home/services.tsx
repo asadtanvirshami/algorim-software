@@ -104,7 +104,7 @@ const Services = (props: Props) => {
       <div className="gap-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ">
         {Service.map((item) => {
           return (
-            <Card className="w-full">
+            <Card key={item.title} className="w-full">
               <CardHeader>
                 <CardTitle>{item.icon} </CardTitle>
                 <CardTitle>{item.title}</CardTitle>

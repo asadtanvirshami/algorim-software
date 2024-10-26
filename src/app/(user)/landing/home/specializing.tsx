@@ -44,14 +44,14 @@ const Specializing = (props: Props) => {
   ];
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-12 border font-[family-name:var(--font-geist-sans)]">
       <h1 className="w-full font-semibold text-3xl md:text-4xl lg:text-4xl text-center">
         Utilizing blockchain & AI technology in multiple Industries
       </h1>
       <div className="space-x-3 flex w-full dark:text-white justify-center items-center ">
         {Industries.map((item) => {
           return (
-            <div key={item.title} className="border font-[family-name:var(--font-geist-sans)] h-[140px] flex-col space-y-3 dark:bg-black p-5 rounded-md">
+            <div key={item.title} className="border font-[family-name:var(--font-geist-sans)]  flex-col space-y-3 dark:bg-black p-3 rounded-md">
               {item.icon}
               <h2 className="font-semibold text-xl">{item.title}</h2>
               <article>{item.description}</article>

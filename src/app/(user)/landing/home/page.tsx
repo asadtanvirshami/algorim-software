@@ -8,6 +8,9 @@ import Specializing from "./specializing";
 import Update from "./update";
 import Serving from "./serving";
 import Head from "next/head";
+import { HeroScrollDemo } from "./tablet-scroll";
+import Testimonials from "./testimonials";
+import FAQs from "./faqs";
 
 type Props = {};
 
@@ -62,12 +65,15 @@ const page = (props: Props) => {
           </div>
         </div>
         <div className="w-full">
-          <div className="container mx-auto space-y-12 md:space-y-22 lg:space-y-60">
+          <div className="container mx-auto space-y-12 md:space-y-22 lg:space-y-52">
             <Vision />
             <Update />
             <Serving />
-            <Services />
             <Specializing />
+            <HeroScrollDemo />
+            <Services />
+            <Testimonials />
+            <FAQs />
           </div>
         </div>
       </div>

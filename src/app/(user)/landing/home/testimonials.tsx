@@ -1,0 +1,53 @@
+import React from "react";
+
+type Props = {};
+
+const Testimonials = (props: Props) => {
+  const testimonials = [
+    {
+      name: "Alice Johnson",
+      customer: "Blockchain customer",
+      testimonial:
+        "Working with Algorim has transformed our approach to technology. Their expertise in blockchain and AI has allowed us to innovate and stay ahead of the competition.",
+      rating: 5,
+    },
+    {
+      name: "Bob Smith",
+      customer: "Application pentesting customer",
+      testimonial:
+        "The team at Algorim provided exceptional cybersecurity solutions tailored to our needs. Their professionalism and knowledge were outstanding!",
+      rating: 4,
+    },
+    {
+      name: "Vasily Brown",
+      customer: "MVP development customer",
+      testimonial:
+        "Algorim's full stack development services exceeded our expectations. They delivered high-quality work on time, and their support throughout the project was invaluable.",
+      rating: 5,
+    },
+  ];
+
+  return (
+    <div className="space-y-12 font-[family-name:var(--font-geist-sans)]">
+      <h1 className="w-full font-semibold text-3xl md:text-4xl lg:text-4xl text-center">
+        Our client feedbacks
+      </h1>
+      <div className="space-x-3 flex w-full dark:text-white justify-center items-center ">
+        {testimonials.map((item) => {
+          return (
+            <div
+              key={item.name}
+              className="border font-[family-name:var(--font-geist-sans)]  flex-col space-y-3 dark:bg-black p-3 rounded-md"
+            >
+              <h2 className="font-semibold text-xl">{item.name}</h2>
+              <article>{item.customer}</article>
+              <article>{item.testimonial}</article>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default Testimonials;

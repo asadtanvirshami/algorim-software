@@ -23,8 +23,8 @@ const Serving = (props: Props) => {
     },
   ];
   return (
-    <div className="">
-      <div className="grid lg:grid-cols-2 justify-stretch w-full ">
+    <section className="">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 justify-stretch w-full ">
         <div className="font-[family-name:var(--font-geist-sans)]">
           <h1 className="w-full font-semibold text-3xl md:text-5xl lg:text-6xl">
             Serving companies of all sizes, worldwide.
@@ -52,7 +52,7 @@ const Serving = (props: Props) => {
         </div>
         <GlobeDemo />
       </div>
-    </div>
+    </section>
   );
 };
 

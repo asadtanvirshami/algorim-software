@@ -32,7 +32,7 @@ const Testimonials = (props: Props) => {
       <h1 className="w-full font-semibold text-3xl md:text-4xl lg:text-4xl text-center">
         Our client feedbacks
       </h1>
-      <div className="space-x-3 flex w-full dark:text-white justify-center items-center ">
+      <div className="gap-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full dark:text-white justify-center items-center ">
         {testimonials.map((item) => {
           return (
             <div

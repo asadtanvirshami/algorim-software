@@ -11,6 +11,7 @@ import Head from "next/head";
 import { HeroScrollDemo } from "./tablet-scroll";
 import Testimonials from "./testimonials";
 import FAQs from "./faqs";
+import Consultaion from "./consultaion";
 
 type Props = {};
 
@@ -70,6 +71,7 @@ const page = (props: Props) => {
             <Update />
             <Serving />
             <Specializing />
+            <Consultaion/>
             <HeroScrollDemo />
             <Services />
             <Testimonials />

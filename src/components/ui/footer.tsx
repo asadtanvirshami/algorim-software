@@ -1,13 +1,17 @@
 import Link from "next/link";
 import React from "react";
 
+import fb from "@/assets/images/socials/icons8-facebook-30.png";
+import insta from "@/assets/images/socials/icons8-instagram-30.png";
+import Image from "next/image";
+
 type Props = {};
 
 const Footer = (props: Props) => {
   return (
     <footer className="flex flex-col border-t-black border p-5 justify-center items-center mt-20 font-[family-name:var(--font-geist-sans)]">
       <div className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4 container space-x-20">
-        <div >
+        <div>
           <h1 className="text-2xl font-bold">About</h1>
           <article className=" text-justify tracking-tighter">
             Algorim is an innovative IT company specializing in cutting-edge
@@ -37,7 +41,12 @@ const Footer = (props: Props) => {
         </ul>
         <ul>
           <h2 className="font-bold">Socials</h2>
-          <li>Instagram</li>
+          <Link href={"https://www.instagram.com/algorim.io/"}>
+            <Image src={insta} className="w-7 h-7" alt="insta" />
+          </Link>
+          <Link href={"https://www.facebook.com/profile.php?id=61568140792184"}>
+          <Image src={fb} className="w-7 h-7" alt="facebook" />
+          </Link>
           <li>LinkedIn</li>
           <li>Twitter</li>
           <li>Facebook</li>

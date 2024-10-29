@@ -12,6 +12,7 @@ import { HeroScrollDemo } from "./tablet-scroll";
 import Testimonials from "./testimonials";
 import FAQs from "./faqs";
 import Consultaion from "./consultaion";
+import ContactForm from "@/components/ui/contact-form";
 
 type Props = {};
 
@@ -71,10 +72,11 @@ const page = (props: Props) => {
             <Update />
             <Serving />
             <Specializing />
-            <Consultaion/>
+            <Consultaion />
             <HeroScrollDemo />
             <Services />
             <Testimonials />
+            <ContactForm />
             <FAQs />
           </div>
         </div>

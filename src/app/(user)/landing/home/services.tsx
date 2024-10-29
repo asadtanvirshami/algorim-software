@@ -105,7 +105,7 @@ const Services = (props: Props) => {
         {Service.map((item) => {
           return (
             <Card key={item.title} className="w-full">
-              <CardHeader>
+              <CardHeader className="dark:text-orange-300">
                 <CardTitle>{item.icon} </CardTitle>
                 <CardTitle>{item.title}</CardTitle>
               </CardHeader>

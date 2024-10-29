@@ -50,10 +50,10 @@ const FAQs = (props: Props) => {
             className="w-full"
           >
             <AccordionItem value="item-1">
-              <AccordionTrigger className="font-semibold text-md">
+              <AccordionTrigger className="font-semibold text-md ">
                 {item.question}
               </AccordionTrigger>
-              <AccordionContent className="text-md">
+              <AccordionContent className="text-md dark:text-orange-300">
                 {item.answer}
               </AccordionContent>
             </AccordionItem>

@@ -51,7 +51,7 @@ const Update = (props: Props) => {
             <div className=" lg:space-x-3 lg:flex w-full dark:text-white justify-start items-center ">
               {Icons.map((item: any) => {
                 return (
-                  <div key={item.icon} className="border mt-4 font-[family-name:var(--font-geist-sans)] flex-col  dark:bg-black p-3 h-fit rounded-md">
+                  <div key={item.icon} className="border mt-4 font-[family-name:var(--font-geist-sans)] flex-col  dark:bg-card  p-3 h-fit rounded-md">
                     <Image src={item.icon} alt="icons" />
                   </div>
                 );

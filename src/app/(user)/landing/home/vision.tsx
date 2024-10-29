@@ -2,6 +2,8 @@ import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Building2, Component, GemIcon } from "lucide-react";
+import { motion } from "framer-motion";
+import { HeroHighlight, Highlight } from "@/components/ui/hero-highlight";
 
 type Props = {};
 
@@ -38,7 +40,7 @@ const Vision = (props: Props) => {
             Our iterative, high-empathy design approach reduces risk and ensures
             a software solution that's just right for your business.
           </article>
-          <Button>
+          <Button className=" bg-orange-400 hover:text-black  dark:text-white hover:bg-card">
             <Link href="/landing/home">
               Learn More About Our Streamline Process
             </Link>
@@ -48,9 +50,14 @@ const Vision = (props: Props) => {
       <div className=" lg:space-x-3 lg:flex w-full dark:text-white justify-center items-center ">
         {Business.map((item) => {
           return (
-            <div key={item.title} className="border mt-4 font-[family-name:var(--font-geist-sans)] hflex-col space-y-3 dark:bg-black p-5 h-fit rounded-md">
+            <div
+              key={item.title}
+              className="border mt-4 font-[family-name:var(--font-geist-sans)] hflex-col space-y-3 dark:bg-card  p-5 h-fit rounded-md"
+            >
               {item.icon}
-              <h2 className="font-semibold text-xl">{item.title}</h2>
+              <h2 className="font-semibold text-xl dark:text-orange-300">
+                {item.title}
+              </h2>
               <article>{item.description}</article>
             </div>
           );

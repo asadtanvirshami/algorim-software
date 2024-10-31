@@ -39,10 +39,12 @@ const Serving = (props: Props) => {
                 return (
                   <div
                     key={item.title}
-                    className="border mt-4 font-[family-name:var(--font-geist-sans)] flex-col  dark:bg-card  p-3 h-fit rounded-md"
+                    className="border mt-4 font-[family-name:var(--font-geist-sans)] flex-col  bg-white  dark:bg-card  p-3 h-fit rounded-md"
                   >
                     {item.icon}
-                    <h2 className="font-semibold text-xl dark:text-orange-300">{item.title}</h2>
+                    <h2 className="font-semibold text-xl dark:text-orange-300">
+                      {item.title}
+                    </h2>
                     <article>{item.description}</article>
                   </div>
                 );

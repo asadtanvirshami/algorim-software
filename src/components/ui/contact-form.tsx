@@ -49,7 +49,7 @@ const ContactForm = (props: Props) => {
 
   return (
     <section>
-      <div className="grid grid-cols-2 justify-center items-center gap-16 font-[family-name:var(--font-geist-sans)]">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2  justify-center items-center gap-16 font-[family-name:var(--font-geist-sans)]">
         <HeroHighlight>
           <motion.h1
             initial={{
@@ -83,24 +83,24 @@ const ContactForm = (props: Props) => {
               onSubmit={handleFormSubmission}
               className="space-y-2"
             >
-              <div className="grid grid-cols-2 gap-2">
-                <span>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-2 ">
+                <span className="space-y-2  pb-2">
                   <Label>Name</Label>
                   <Input name="user_name" />
                 </span>
-                <span>
+                <span className="space-y-2  pb-2">
                   <Label>Email</Label>
                   <Input name="user_email" />
                 </span>
               </div>
-              <span>
+              <span className="space-y-2  pb-2">
                 <Label>Subject</Label>
                 <Input name="user_select" />
               </span>
-              <span>
+              <div className="space-y-2  pb-2">
                 <Label>Description</Label>
                 <Textarea name="user_message" />
-              </span>
+              </div>
               <span className="flex justify-end mt-5">
                 <Button type="submit">Submit</Button>
               </span>

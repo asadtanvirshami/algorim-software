@@ -37,7 +37,7 @@ const Testimonials = (props: Props) => {
           return (
             <div
               key={item.name}
-              className="border font-[family-name:var(--font-geist-sans)]  flex-col space-y-3 dark:bg-card p-3 rounded-md"
+              className="border font-[family-name:var(--font-geist-sans)] bg-white  flex-col space-y-3 dark:bg-card p-3 rounded-md"
             >
               <h2 className="font-semibold text-xl dark:text-orange-300">{item.name}</h2>
               <article>{item.customer}</article>

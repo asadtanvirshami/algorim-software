@@ -10,8 +10,8 @@ import Serving from "./serving";
 import Head from "next/head";
 import { HeroScrollDemo } from "./tablet-scroll";
 import Testimonials from "./testimonials";
-import FAQs from "./faqs";
-import Consultaion from "./consultaion";
+import FAQs from "../../../../components/ui/faqs";
+import Consultaion from "../../../../components/ui/consultaion";
 import ContactForm from "@/components/ui/contact-form";
 
 type Props = {};
@@ -35,9 +35,9 @@ const page = (props: Props) => {
         <meta property="og:type" content="website" />
       </Head>
 
-      <div className="relative isolate overflow-hidden w-full h-full ">
+      <div className="relative isolate overflow-hidden w-full h-full  ">
         <svg
-          className="absolute inset-0 -z-10 h-full w-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
+          className="absolute inset-0 -z-10 h-full w-full stroke-gray-100 [mask-image:radial-gradient(100%_100%_at_center,white,transparent)]"
           aria-hidden="true"
         >
           <defs>
@@ -49,7 +49,12 @@ const page = (props: Props) => {
               y={-1}
               patternUnits="userSpaceOnUse"
             >
-              <path d="M.5 200V.5H200" fill="none" />
+              <path
+                d="M.5 200V.5H200"
+                fill="none"
+                stroke="gray"
+                strokeWidth="0.3"
+              />
             </pattern>
           </defs>
           <rect
@@ -59,6 +64,7 @@ const page = (props: Props) => {
             fill="url(#0787a7c5-978c-4f66-83c7-11c213f99cb7)"
           />
         </svg>
+
         <div className="mx-auto h-full justify-center items-center align-middle max-w-7xl  sm:pb-32 lg:flex lg:py-30 lg:px-8">
           <div className="mx-auto  max-w-xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 flex flex-col justify-center">
             <div className="flex flex-col items-center justify-center text-center ">

@@ -48,7 +48,7 @@ const Update = (props: Props) => {
             in touch with you.
           </article>
           <div className="flex just space-x-3">
-            <div className=" lg:space-x-3 lg:flex w-full dark:text-white justify-start items-center ">
+            <div className=" lg:space-x-3 lg:flex w-full  dark:text-white justify-start items-center ">
               {Icons.map((item: any) => {
                 return (
                   <div key={item.icon} className="border mt-4 font-[family-name:var(--font-geist-sans)] flex-col  dark:bg-card  p-3 h-fit rounded-md">

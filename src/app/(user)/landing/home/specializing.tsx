@@ -53,7 +53,7 @@ const Specializing = (props: Props) => {
           return (
             <div
               key={item.title}
-              className="border font-[family-name:var(--font-geist-sans)] space-y-2 p-3 dark:bg-card   rounded-md"
+              className="border font-[family-name:var(--font-geist-sans)] space-y-2 p-3  bg-white  dark:bg-card   rounded-md"
             >
               {item.icon}
               <h2 className="font-semibold text-xl dark:text-orange-300">{item.title}</h2>

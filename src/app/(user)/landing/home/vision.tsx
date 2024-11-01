@@ -9,17 +9,17 @@ type Props = {};
 
 const Business = [
   {
-    icon: <GemIcon />,
+    icon: <GemIcon className="text-orange-300 " />,
     title: "Mid-Sized",
     description: "Launch your core software and get to market faster",
   },
   {
-    icon: <Component />,
+    icon: <Component className="text-orange-300 " />,
     title: "Large",
     description: "Easily scale your business to meet increased demand",
   },
   {
-    icon: <Building2 />,
+    icon: <Building2 className="text-orange-300 " />,
     title: "Enterprises",
     description: "Innovate quickly without burdening your internal teams",
   },
@@ -28,12 +28,12 @@ const Business = [
 const Vision = (props: Props) => {
   return (
     <div className="space-y-12">
-      <div className="space-y-4 md:space-y-0 lg:space-y-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 p-2 w-full flex-row font-[family-name:var(--font-geist-sans)]">
+      <div className="space-y-4 md:space-y-0 lg:space-y-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 p-2 w-full flex-row font-[family-name:var(--font-redhat)]">
         <h1 className="w-full font-semibold text-3xl md:text-5xl lg:text-6xl">
           You bring the vision, we bring the spark.
         </h1>
         <div className="space-y-5">
-          <article className="tracking-tighter text-justify text-[15px] md:text-xl lg:text-xl">
+          <article className="tracking-tight text-justify text-[15px] md:text-xl lg:text-xl">
             The size of your vision is more important than the size of your
             organization. Whether you're a mid-sized business, an enterprise, or
             somewhere in between, Taazaa is your Goldilocks software partner.
@@ -52,10 +52,10 @@ const Vision = (props: Props) => {
           return (
             <div
               key={item.title}
-              className="border mt-4 font-[family-name:var(--font-geist-sans)] hflex-col space-y-3 dark:bg-card  p-5 h-fit rounded-md"
+              className="border text-white bg-zinc-900  mt-4 font-[family-name:var(--font-redhat)] flex-col space-y-3 dark:bg-card  p-5 h-fit rounded-md"
             >
               {item.icon}
-              <h2 className="font-semibold text-xl dark:text-orange-300">
+              <h2 className="font-semibold text-xl text-orange-300">
                 {item.title}
               </h2>
               <article>{item.description}</article>

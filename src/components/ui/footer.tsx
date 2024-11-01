@@ -9,7 +9,7 @@ type Props = {};
 
 const Footer = (props: Props) => {
   return (
-    <footer className="flex flex-col border-t-black border p-5 justify-center items-center mt-20 font-[family-name:var(--font-geist-sans)]">
+    <footer className="flex flex-col border-t-black border p-5 justify-center items-center mt-20 font-[family-name:var(--font-redhat)]">
       <div className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4 container space-x-20">
         <div>
           <h1 className="text-2xl font-bold">About</h1>

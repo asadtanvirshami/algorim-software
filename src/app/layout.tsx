@@ -7,15 +7,16 @@ const geistSans = localFont({
   variable: "--font-geist-sans",
   weight: "100 900",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
 const revamped = localFont({
   src: "./fonts/Revamped.otf",
   variable: "--font-revamped",
+  weight: "100 900",
+});
+
+const redhat = localFont({
+  src: "./fonts/RedHatDisplay-Regular.ttf",
+  variable: "--font-redhat",
   weight: "100 900",
 });
 
@@ -39,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable}  {geistMono.variable} ${revamped.variable} ${codec.variable} antialiased`}
+        className={`${geistSans.variable} ${redhat.variable} ${revamped.variable} ${codec.variable} antialiased`}
       >
         {children}
       </body>

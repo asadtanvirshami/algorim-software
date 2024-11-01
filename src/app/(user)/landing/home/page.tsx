@@ -13,6 +13,8 @@ import Testimonials from "./testimonials";
 import FAQs from "../../../../components/ui/faqs";
 import Consultaion from "../../../../components/ui/consultaion";
 import ContactForm from "@/components/ui/contact-form";
+import CountUp from "@/components/ui/count-up";
+import Process from "./process";
 
 type Props = {};
 
@@ -35,7 +37,7 @@ const page = (props: Props) => {
         <meta property="og:type" content="website" />
       </Head>
 
-      <div className="relative isolate overflow-hidden w-full h-full  ">
+      <div className="relative isolate overflow-hidden w-full h-full  font-[family-name:var(--font-redhat)] ">
         <svg
           className="absolute inset-0 -z-10 h-full w-full stroke-gray-100 [mask-image:radial-gradient(100%_100%_at_center,white,transparent)]"
           aria-hidden="true"
@@ -78,8 +80,10 @@ const page = (props: Props) => {
             <Update />
             <Serving />
             <Specializing />
+            <Process/>
             <Consultaion />
             <HeroScrollDemo />
+            <CountUp/>
             <Services />
             <Testimonials />
             <ContactForm />

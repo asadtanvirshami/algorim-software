@@ -37,18 +37,18 @@ const FAQs = (props: Props) => {
     },
   ];
   return (
-    <section className="font-[family-name:var(--font-geist-sans)]">
+    <section className="font-[family-name:var(--font-redhat)]">
       <h1 className="w-full font-semibold text-3xl md:text-4xl lg:text-4xl text-center mb-12">
         Frequently Asked Questions
       </h1>
-      <div className="bg-white shadow-md rounded-lg mb-12">
+      <div className="bg-card shadow-md rounded-lg mb-12">
         {faqs.map((item: any) => {
           return (
             <Accordion
               key={item.question}
               type="single"
               collapsible
-              className="w-full p-3 bg-white dark:bg-card"
+              className="w-full p-3  "
             >
               <AccordionItem value="item-1">
                 <AccordionTrigger className="font-semibold text-lg ">

@@ -89,12 +89,12 @@ const Service = [
 
 const Services = (props: Props) => {
   return (
-    <div className="p-2 w-full flex-row space-y-5 font-[family-name:var(--font-geist-sans)]">
+    <div className="p-2 w-full flex-row space-y-5 font-[family-name:var(--font-redhat)]">
       <h1 className="font-semibold text-3xl md:text-4xl lg:text-5 xl lg:w-[50rem]">
         We deliver the services you need, with the quality you deserve
       </h1>
       <div className="w-fit">
-        <article className="tracking-tighter text-justify text-[15px] md:text-2xl lg:text-2xl">
+        <article className="tracking-tight text-justify text-[15px] md:text-2xl lg:text-2xl">
           Whether you're looking for a cutting-edge cloud solution, benefit the
           decentralized technology, or if you want to harness AI's potential, or
           need to reinvent the user experience, we're your all-in-one innovation
@@ -104,12 +104,12 @@ const Services = (props: Props) => {
       <div className="gap-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ">
         {Service.map((item) => {
           return (
-            <Card key={item.title} className="w-full">
-              <CardHeader className="dark:text-orange-300">
+            <Card key={item.title} className="w-full bg-zinc-900 dark:bg-card ">
+              <CardHeader className="text-orange-300">
                 <CardTitle>{item.icon} </CardTitle>
                 <CardTitle>{item.title}</CardTitle>
               </CardHeader>
-              <CardContent>{item.description}</CardContent>
+              <CardContent className="text-white">{item.description}</CardContent>
               <CardFooter className="flex justify-between"></CardFooter>
             </Card>
           );

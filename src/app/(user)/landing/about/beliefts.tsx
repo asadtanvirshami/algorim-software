@@ -66,19 +66,19 @@ type Props = {};
 const Beliefs = (props: Props) => {
   return (
     <section className="justify-center items-center">
-      <div className=" font-[family-name:var(--font-geist-sans)] space-y-12">
+      <div className=" font-[family-name:var(--font-redhat)] space-y-12">
         <div className="p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 items-center">
-          <ol className="bg-card rounded-xl px-5 py-3 shadow-md order-1 lg:order-none">
+          <ol className=" bg-zinc-900 dark:bg-card text-white rounded-xl px-5 py-3 shadow-md order-1 lg:order-none">
             {trust.map((item) => (
               <div key={item.title} className="mt-4 flex items-start p-1 ">
                 {item.icon}
                 {/* Icon */}
                 <div className="ml-4">
-                  <li className="text-xl text-orange-300 list-none">
+                  <li className="text-lg text-orange-300 list-none">
                     {item.title}
                   </li>{" "}
                   {/* Title */}
-                  <li className="w-full text-[15px] md:text-[16px] lg:text-[17px] md:w-full lg:w-full text-justify tracking-tighter list-none">
+                  <li className="w-full text-[15px] md:text-[16px] lg:text-[16px] md:w-full lg:w-full text-justify tracking-tight list-none">
                     {item.description}
                   </li>{" "}
                   {/* Description */}
@@ -89,27 +89,27 @@ const Beliefs = (props: Props) => {
 
           <div className="text-center md:text-right lg:text-right">
             <h1 className="text-4xl md:text-4xl lg:text-7xl font-semibold">
-              It's all about trust.
+              It's all about Trust,
             </h1>
           </div>
         </div>
       </div>
-      <div className=" font-[family-name:var(--font-geist-sans)]">
+      <div className=" font-[family-name:var(--font-redhat)]">
         <div className="p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 items-center">
           <h1 className="text-4xl md:text-4xl lg:text-7xl font-semibold text-center lg:text-left">
-            Beliefs & Values
+            Beliefs & Values.
           </h1>
-          <ol className="bg-card rounded-xl px-5 py-3 shadow-md">
+          <ol className="bg-zinc-900 dark:bg-card text-white rounded-xl px-5 py-3 shadow-md">
             {beliefsAndValues.map((item) => (
               <div key={item.title} className="mt-4 flex items-start p-1 ">
                 {item.icon}
                 {/* Icon */}
                 <div className="ml-4">
-                  <li className="text-xl text-orange-300 list-none">
+                  <li className="text-lg text-orange-300 list-none">
                     {item.title}
                   </li>{" "}
                   {/* Title */}
-                  <li className="w-full text-[15px]  md:w-fit md:text-[16px] lg:text-[17px] lg:w-full text-justify tracking-tighter list-none">
+                  <li className="w-full text-[15px]  md:w-fit md:text-[16px] lg:text-[15px] lg:w-full text-justify tracking-tight list-none">
                     {item.description}
                   </li>{" "}
                   {/* Description */}

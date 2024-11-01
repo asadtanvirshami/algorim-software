@@ -8,6 +8,7 @@ import Beliefs from "./beliefts";
 import Consultaion from "@/components/ui/consultaion";
 import Contributions from "./contributions";
 import Head from "next/head";
+import CountUp from "@/components/ui/count-up";
 
 type Props = {};
 
@@ -70,10 +71,11 @@ const About = (props: Props) => {
         <div className="w-full">
           <div className="container mx-auto space-y-12 md:space-y-22 lg:space-y-52">
             <Beliefs />
-            <Contributions />
             <Consultaion />
-            <FAQs />
+            <Contributions />
+            <CountUp/>
             <ContactForm />
+            <FAQs />
           </div>
         </div>
       </div>

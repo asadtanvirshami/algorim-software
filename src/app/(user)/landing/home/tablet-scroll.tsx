@@ -11,7 +11,7 @@ export function HeroScrollDemo() {
       <ContainerScroll
         titleComponent={
           <>
-            <h1 className="text-4xl font-semibold text-black dark:text-white">
+            <h1 className="text-4xl font-semibold font-[family-name:var(--font-redhat)] text-black dark:text-white">
               Unleash the power of <br />
               <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none dark:text-orange-300">
                 Ultimate Apps

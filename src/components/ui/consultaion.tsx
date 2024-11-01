@@ -8,7 +8,7 @@ type Props = {};
 
 const Consultaion = (props: Props) => {
   return (
-    <section className="flex justify-center items-center border rounded-lg font-[family-name:var(--font-geist-sans)] bg-white dark:bg-card  " >
+    <section className="flex  bg-zinc-900 dark:bg-card justify-center items-center border rounded-lg font-[family-name:var(--font-redhat)] text-white" >
       <div className="w-fit gap-12 p-6 flex items-center ">
         <div>
           <h1 className="text-4xl">Book Consultation</h1>

@@ -3,7 +3,7 @@
 import React from "react";
 import Hero from "./hero";
 import Vision from "./vision";
-import Services from "./services";
+import Services from "../services/services";
 import Specializing from "./specializing";
 import Update from "./update";
 import Serving from "./serving";
@@ -75,15 +75,15 @@ const page = (props: Props) => {
           </div>
         </div>
         <div className="w-full">
-          <div className="container mx-auto space-y-12 md:space-y-22 lg:space-y-52">
+          <div className="container mx-auto space-y-12 md:space-y-22 lg:space-y-52 p-3">
             <Vision />
             <Update />
             <Serving />
             <Specializing />
-            <Process/>
+            <Process />
             <Consultaion />
             <HeroScrollDemo />
-            <CountUp/>
+            <CountUp />
             <Services />
             <Testimonials />
             <ContactForm />

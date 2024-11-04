@@ -13,7 +13,7 @@ const Hero = (props: Props) => {
         <h1 className="text-[16rem] font-bold">ALGORIM</h1>
       </div> */}
         <div className="relative  flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full  after:dark:via-[#333333] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-          <div data-aos="fade-up" data-aos-anchor-placement="center-bottom">
+          <div >
             <h1 className="text-[4rem] lg:text-[14rem] font-bold font-[family-name:var(--font-revamped)]  ">
               ALGORIM
             </h1>

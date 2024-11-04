@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
-import Gif from "@/assets/images/push.gif";
+import pushMob from "@/assets/lottie/Push-notification-list-(iOS)-[remix].json"; 
+import Lottie from "lottie-react";
 
 import Gmail from "@/assets/images/socials/icons8-gmail-64.png";
 import Slack from "@/assets/images/socials/icons8-slack-64.png";
@@ -33,11 +34,7 @@ const Update = (props: Props) => {
   return (
     <div className="">
       <div className="grid lg:grid-cols-2 justify-stretch w-full ">
-        <Image
-          alt="mobile-app"
-          className="rounded-xl w-fit lg:ml-52"
-          src={Gif}
-        />
+        <Lottie style={{height:550}} animationData={pushMob} loop={true} />
         <div className="font-[family-name:var(--font-redhat)]">
           <h1 className="w-full font-semibold text-3xl md:text-5xl lg:text-6xl">
             It's important for you to know what's new
@@ -48,7 +45,7 @@ const Update = (props: Props) => {
             in touch with you.
           </article>
           <div className="flex just space-x-3">
-            <div className=" lg:space-x-3 lg:flex w-full  dark:text-white justify-center items-center ">
+            <div className=" lg:space-x-3 lg:flex w-full flex   dark:text-white justify-center items-center ">
               {Icons.map((item: any) => {
                 return (
                   <div key={item.icon} className="border bg-zinc-900 dark:bg-card mt-4 font-[family-name:var(--font-redhat)] flex-col p-3 h-fit rounded-md">

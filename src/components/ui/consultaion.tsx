@@ -21,7 +21,7 @@ const Consultaion = (props: Props) => {
           <Image
             src={consult}
             alt="consultation"
-            className="rounded-lg w-52 h-52"
+            className="rounded-lg w-full md:w-52 md:h-52 lg:w-52 lg:h-52"
             draggable={false}
           />
         </div>

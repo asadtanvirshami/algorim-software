@@ -1,29 +1,25 @@
 "use client";
-
 import React from "react";
-import Hero from "./hero";
-import FAQs from "@/components/ui/faqs";
-import ContactForm from "@/components/ui/contact-form";
-import Beliefs from "./beliefts";
+import { HeroParallaxDemo } from "./showcase";
 import Consultaion from "@/components/ui/consultaion";
-import Contributions from "./contributions";
+import ContactForm from "@/components/ui/contact-form";
+import FAQs from "@/components/ui/faqs";
 import Head from "next/head";
 import CountUp from "@/components/ui/count-up";
-import { TimelineDemo } from "./timline";
 
 type Props = {};
 
-const About = (props: Props) => {
+const Portfolio = (props: Props) => {
   return (
     <React.Fragment>
       <Head>
-        <title>About - Algorim - Blockchain & AI Solutions</title>
+        <title>Portfolio - Algorim - Blockchain & AI Solutions</title>
         <meta
           name="description"
           content="Utilizing the technology of Blockchain & AI for Business. We build robust, scalable, and secure solutions for your business. Learn more about our services."
         />
         <meta name="robots" content="index,follow" />
-        <meta property="og:title" content="About Page - Algorim" />
+        <meta property="og:title" content="Portfolio - Algorim" />
         <meta
           property="og:description"
           content="Utilizing the technology of Blockchain & AI for Business. We build robust, scalable, and secure solutions for your business"
@@ -32,7 +28,7 @@ const About = (props: Props) => {
         <meta property="og:type" content="website" />
       </Head>
 
-      <div className="relative isolate overflow-hidden w-full h-full  ">
+      <div className="relative isolate overflow-hidden w-full h-full  font-[family-name:var(--font-redhat)] ">
         <svg
           className="absolute inset-0 -z-10 h-full w-full stroke-gray-100 [mask-image:radial-gradient(100%_100%_at_center,white,transparent)]"
           aria-hidden="true"
@@ -62,21 +58,18 @@ const About = (props: Props) => {
           />
         </svg>
 
-        <div className="mx-auto h-full justify-center items-center align-middle max-w-7xl  sm:pb-32 lg:flex lg:py-30 lg:px-8">
+        <div className="mx-auto h-full justify-center items-start align-start max-w-7xl  sm:pb-32 lg:flex lg:py-30 lg:px-8">
           <div className="mx-auto  max-w-xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 flex flex-col justify-center">
-            <div className="flex flex-col items-center justify-center text-center ">
-              <Hero />
+            <div className="flex flex-col items-center justify-center text-start ">
+              <HeroParallaxDemo />
             </div>
           </div>
         </div>
         <div className="w-full">
           <div className="container mx-auto space-y-12 md:space-y-22 lg:space-y-52 p-3">
-            <Beliefs />
-            <TimelineDemo/>
-            <Consultaion />
-            <Contributions />
             <CountUp/>
             <ContactForm />
+            <Consultaion />
             <FAQs />
           </div>
         </div>
@@ -85,4 +78,4 @@ const About = (props: Props) => {
   );
 };
 
-export default About;
+export default Portfolio;

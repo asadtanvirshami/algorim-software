@@ -64,9 +64,9 @@ const ContactForm = (props: Props) => {
               duration: 0.5,
               ease: [0.4, 0.0, 0.2, 1],
             }}
-            className="text-3xl px-4 md:text-3xl lg:text-3xl font-bold text-neutral-700 dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
+            className="text-3xl px-4 md:text-3xl lg:text-4xl font-bold text-neutral-700 dark:text-white max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto "
           >
-            We love coming up with fresh ideas to increase conversions!
+            We love coming up with fresh ideas to
             <Highlight className="text-white dark:text-white">
               increase conversions!
             </Highlight>

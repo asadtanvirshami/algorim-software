@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import Gif from "@/assets/images/mob.gif";
+import Lottie from "lottie-react";
+import revenueApp from "@/assets/lottie/Revenue-App-(Dribbble-shot)-[remix].json"; 
+// import showReel from "@/assets/lottie/Showreel-Grid-Mobile-[remix].json";
 
 // ... rest of your code ...
 
@@ -34,11 +36,7 @@ const Process = (props: Props) => {
     <div className="">
       <div className="grid lg:grid-cols-2 items-center justify-stretch w-full ">
         <div className="">
-          <Image
-            alt="mobile-app"
-            className="rounded-xl w-fit lg:ml-52  shadow-md bg-orange-100 dark:shadow-none dark:bg-transparent backdrop-blur-sm"
-            src={Gif}
-          />
+        <Lottie style={{height:650}} animationData={revenueApp} loop={true} />
         </div>
         <div className="font-[family-name:var(--font-redhat)]">
           <div className="gap-4">

@@ -2,21 +2,28 @@ import React from "react";
 import Navbar from "./navbar";
 import AnimatedCursor from "react-animated-cursor";
 import Footer from "./footer";
+import { usePathname } from "next/navigation";
 
 interface LayoutProps {
   children: React.ReactNode;
-  navCollapsedSize?: number; 
+  navCollapsedSize?: number;
 }
+
 const MainLayout = ({ children }: LayoutProps) => {
-  const cursorSettings:any = {
-    target: ".cursor", 
+  const path = usePathname();
+  const cursorSettings: any = {
+    target: ".cursor",
     innerSize: 12,
     outerSize: 12,
-    color: "255, 165, 0", 
+    color: "255, 165, 0",
     outerAlpha: 0.3,
     innerScale: 0.7,
     outerScale: 5,
   };
+
+  // Determine if the current path is for auth pages
+  const isAuthPath = path === "/auth/signin" || path === "/auth/signup";
+
   return (
     <React.Fragment>
       <AnimatedCursor
@@ -41,12 +48,14 @@ const MainLayout = ({ children }: LayoutProps) => {
           {
             target: ".custom",
             options: cursorSettings,
-          } as any
+          } as any,
         ]}
       />
-      <Navbar />
+
+      {/* Conditionally render Navbar and Footer based on the current path */}
+      {!isAuthPath && <Navbar />}
       {children}
-      <Footer/>
+      {!isAuthPath && <Footer />}
     </React.Fragment>
   );
 };

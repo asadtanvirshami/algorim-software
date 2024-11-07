@@ -5,7 +5,7 @@ import React from "react";
 const Serving = () => {
   const Business = [
     {
-      icon: <HandHeart className="text-red-500"  />,
+      icon: <HandHeart className="text-red-500" />,
       title: "Support",
       description: "With our expertise and experience, we can help",
     },
@@ -21,8 +21,8 @@ const Serving = () => {
     },
   ];
   return (
-    <section className="">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 justify-stretch w-full ">
+    <section className="pt-12">
+      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 justify-stretch w-full ">
         <div className="font-[family-name:var(--font-redhat)]">
           <h1 className="w-full font-semibold text-3xl md:text-5xl lg:text-6xl">
             Serving companies of all sizes, worldwide.

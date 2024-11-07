@@ -1,6 +1,6 @@
-const { SitemapStream, streamToPromise } = require('sitemap');
-const { createWriteStream } = require('fs');
-const path = require('path');
+import { SitemapStream, streamToPromise } from 'sitemap';
+import { createWriteStream } from 'fs';
+import path from 'path';
 
 const BASE_URL = 'https://algorimsoftware.io'; // Replace with your site's URL
 

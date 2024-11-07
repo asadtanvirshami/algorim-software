@@ -41,7 +41,7 @@ const FAQs = () => {
         Frequently Asked Questions
       </h1>
       <div className="bg-card shadow-md rounded-lg mb-12">
-        {faqs.map((item: any) => {
+        {faqs.map((item) => {
           return (
             <Accordion
               key={item.question}

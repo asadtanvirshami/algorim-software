@@ -5,9 +5,7 @@ import support from "@/assets/images/daria-nepriakhina-xY55bL5mZAM-unsplash.jpg"
 import startup from "@/assets/images/annie-spratt-QckxruozjRg-unsplash.jpg";
 import web3 from "@/assets/images/shubham-dhage-UxDU0Gg5pqQ-unsplash.jpg";
 
-type Props = {};
-
-const Contributions = (props: Props) => {
+const Contributions = () => {
   const contributes = [
     {
       icon: support,

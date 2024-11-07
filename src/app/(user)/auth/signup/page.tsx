@@ -31,7 +31,7 @@ const Auth = () => {
     password: "",
   });
 
-  const handleSignup = async (e: HTMLFormElement) => {
+  const handleSignup = async () => {
     // e.preventDefault();
     // const request = await userSignUpRequest(
     //   form.firstName,
@@ -83,8 +83,8 @@ const Auth = () => {
               </CardHeader>
               <CardContent>
                 <form
-                  onSubmit={(e: any) => {
-                    handleSignup(e);
+                  onSubmit={() => {
+                    handleSignup();
                   }}
                 >
                   <div className="grid w-full items-center gap-4">

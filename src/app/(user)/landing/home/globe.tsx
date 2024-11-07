@@ -1,5 +1,5 @@
 "use client";
-import React,{memo} from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
@@ -10,7 +10,7 @@ const World = dynamic(
   }
 );
 
-export const GlobeModel = memo(() => {
+export const GlobeModel = (() => {
   const globeConfig = React.useMemo(
     () => ({
       pointSize: 4,

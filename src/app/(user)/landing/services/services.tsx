@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */  
 import Head from "next/head";
-import React, { memo } from "react";
+import React from "react";
 import {
   AppWindowIcon,
   Blocks,
@@ -86,7 +86,7 @@ const servicesData: ServiceType[] = [
   },
 ];
 
-const Services = memo(() => {
+const Services =(() => {
   return (
     <div className="p-2 w-full flex-row space-y-5 font-[family-name:var(--font-redhat)]">
       <Head>

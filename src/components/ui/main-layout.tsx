@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "./navbar";
 import AnimatedCursor from "react-animated-cursor";
 import Footer from "./footer";
@@ -11,7 +10,17 @@ interface LayoutProps {
 
 const MainLayout = ({ children }: LayoutProps) => {
   const path = usePathname();
-  const cursorSettings: any = {
+
+  // Define a more specific type for cursorSettings
+  const cursorSettings: {
+    target: string;
+    innerSize: number;
+    outerSize: number;
+    color: string;
+    outerAlpha: number;
+    innerScale: number;
+    outerScale: number;
+  } = {
     target: ".cursor",
     innerSize: 12,
     outerSize: 12,
@@ -26,7 +35,7 @@ const MainLayout = ({ children }: LayoutProps) => {
   const iLoadingPage = path === "/";
 
   return (
-    <React.Fragment>
+    <>
       <AnimatedCursor
         innerSize={8}
         outerSize={8}
@@ -48,8 +57,7 @@ const MainLayout = ({ children }: LayoutProps) => {
           ".link",
           {
             target: ".custom",
-            options: cursorSettings,
-          } as any,
+          },
         ]}
       />
 
@@ -57,7 +65,7 @@ const MainLayout = ({ children }: LayoutProps) => {
       {!isAuthPath && !iLoadingPage && <Navbar />}
       {children}
       {!isAuthPath && !iLoadingPage && <Footer />}
-    </React.Fragment>
+    </>
   );
 };
 

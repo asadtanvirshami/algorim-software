@@ -15,7 +15,7 @@ import { motion } from "framer-motion";
 import { HeroHighlight, Highlight } from "../ui/hero-highlight";
 
 const ContactForm = () => {
-  // const [condition, setCondition] = React.useState<boolean>(false);
+  const [condition, setCondition] = React.useState<boolean>(false);
 
   const handleFormSubmission = async (
     event: React.FormEvent<HTMLFormElement>
@@ -31,9 +31,9 @@ const ContactForm = () => {
           "d5v8gYI0Ev9r_ATt-"
         );
 
-        // if (response.status === 200) {
-        //   // setCondition(true);
-        // }
+        if (response.status === 200) {
+          setCondition(true);
+        }
       } catch (error) {
         console.error(error);
       }
@@ -103,6 +103,7 @@ const ContactForm = () => {
                 <Button type="submit">Submit</Button>
               </span>
             </form>
+            {condition && <p className="text-green-500">Message sent</p>}
           </CardContent>
         </Card>
       </div>

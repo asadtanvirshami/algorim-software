@@ -39,7 +39,7 @@ const servicesData: ServiceType[] = [
   { icon: <AppWindowIcon />, title: 'Full Stack Development', description: 'From basic business websites to complex platforms.' },
 ];
 
-const Services = memo(() => {
+const Services = (() => {
   return (
     <div className="p-2 w-full flex-row space-y-5 font-[family-name:var(--font-redhat)]">
       <Head>
@@ -111,4 +111,4 @@ const Feature = ({
   );
 };
 
-export default Services;
+export default memo(Services);

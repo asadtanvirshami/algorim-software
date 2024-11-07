@@ -23,6 +23,7 @@ const MainLayout = ({ children }: LayoutProps) => {
 
   // Determine if the current path is for auth pages
   const isAuthPath = path === "/auth/signin" || path === "/auth/signup";
+  const iLoadingPage = path === "/";
 
   return (
     <React.Fragment>
@@ -53,9 +54,9 @@ const MainLayout = ({ children }: LayoutProps) => {
       />
 
       {/* Conditionally render Navbar and Footer based on the current path */}
-      {!isAuthPath && <Navbar />}
+      {!isAuthPath && !iLoadingPage && <Navbar />}
       {children}
-      {!isAuthPath && <Footer />}
+      {!isAuthPath && !iLoadingPage && <Footer />}
     </React.Fragment>
   );
 };

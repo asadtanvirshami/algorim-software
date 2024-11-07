@@ -1,10 +1,10 @@
-"use client"
+"use client";
 import { useState } from "react";
 import ThemeSwitcher from "./theme-switch";
 import Link from "next/link";
 import { Button } from "./button";
-import { LogIn, Menu } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { Menu } from "lucide-react";
+// import { useRouter } from "next/navigation";
 // import ChevronDownIcon from "../Assets/ChevronDown";
 // import ChevronUpGradientIcon from "../Assets/ChevronUpGradient";
 
@@ -38,7 +38,12 @@ const TealArrow = () => {
   );
 };
 
-const NavLink = ({ name, href }: any) => {
+interface NavLinkProps {
+  name: string;
+  href: string;
+}
+
+const NavLink: React.FC<NavLinkProps> = ({ name, href }) => {
   return (
     <Link
       href={href}
@@ -49,14 +54,14 @@ const NavLink = ({ name, href }: any) => {
   );
 };
 
-const TryProductsButton = (props: any) => {
-  const router= useRouter()
-  return (
-    <Button onClick={()=>router.push("/auth/signin")} className="font-semibold" shimmer>
-      Sign In <LogIn />
-    </Button>
-  );
-};
+// const TryProductsButton = () => {
+//   const router= useRouter()
+//   return (
+//     <Button onClick={()=>router.push("/auth/signin")} className="font-semibold" shimmer>
+//       Sign In <LogIn />
+//     </Button>
+//   );
+// };
 
 const links = [
   {
@@ -83,7 +88,7 @@ const links = [
 
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen] = useState(false);
 
   const toogle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -101,11 +106,9 @@ function Navbar() {
           {links.map(function (link) {
             console.log("test");
             return (
-              <NavLink
-                key={Math.random().toString()}
-                name={link.name}
-                href={link.href}
-              />
+              <div key={Math.random().toString()}>
+                <NavLink name={link.name} href={link.href} />
+              </div>
             );
           })}
         </div>
@@ -141,13 +144,15 @@ function Navbar() {
             aria-haspopup="true"
             className="inline-flex items-center justify-center p-2 rounded-md text-black dark:text-orange-300 dark:bg-black bg-gray-100 hover:bg-gray-100 border focus:outline-none "
           >
-            <Menu/>
+            <Menu />
           </Button>
         </div>
       </nav>
       <div
         className={`${
-          isMobileMenuOpen ? "block  transition-all duration-300 border" : "hidden"
+          isMobileMenuOpen
+            ? "block  transition-all duration-300 border"
+            : "hidden"
         } md:hidden px-2 pt-2 pb-4`}
       >
         {links.map(function (link) {

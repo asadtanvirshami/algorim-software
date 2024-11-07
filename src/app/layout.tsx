@@ -20,12 +20,6 @@ const redhat = localFont({
   weight: "100 900",
 });
 
-const codec = localFont({
-  src: "./fonts/Codec-Warm-Bold-trial.ttf",
-  variable: "--font-codec",
-  weight: "100 900",
-});
-
 export const metadata: Metadata = {
   title: "Algorim - Blockchain & AI Solutions",
   description:
@@ -40,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${redhat.variable} ${revamped.variable} ${codec.variable} antialiased`}
+        className={`${geistSans.variable} ${redhat.variable} ${revamped.variable} antialiased`}
       >
         {children}
       </body>

@@ -1,4 +1,4 @@
-import { GlobeDemo } from "@/app/(user)/landing/home/globe";
+import { GlobeModel } from "./globe";
 import { GlobeIcon, HandHeart, HeartHandshakeIcon } from "lucide-react";
 import React from "react";
 
@@ -52,7 +52,7 @@ const Serving = (props: Props) => {
             </div>
           </div>
         </div>
-        <GlobeDemo />
+        <GlobeModel />
       </div>
     </section>
   );

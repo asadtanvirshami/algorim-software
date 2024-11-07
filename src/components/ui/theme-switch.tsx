@@ -18,7 +18,7 @@ const ThemeSwitcher = () => {
     <button
       onClick={toggleTheme}
       className={`p-2 rounded-full transition duration-500  ${
-        theme === "light" ? "bg-gray-200" : "bg-orange-500"
+        theme === "light" ? "bg-gray-200" : "bg-orange-400"
       }`}
     >
       {theme === "light" ? <Moon /> : <Sun />}

@@ -1,32 +1,21 @@
 "use client";
-import React from "react";
+import React, { memo } from "react";
 import { HeroParallaxDemo } from "./showcase";
 import Consultaion from "@/components/ui/consultaion";
 import ContactForm from "@/components/ui/contact-form";
 import FAQs from "@/components/ui/faqs";
-import Head from "next/head";
 import CountUp from "@/components/ui/count-up";
+import SeoHead from "@/components/ui/seo-head";
 
 type Props = {};
 
 const Portfolio = (props: Props) => {
   return (
     <React.Fragment>
-      <Head>
-        <title>Portfolio - Algorim - Blockchain & AI Solutions</title>
-        <meta
-          name="description"
-          content="Utilizing the technology of Blockchain & AI for Business. We build robust, scalable, and secure solutions for your business. Learn more about our services."
-        />
-        <meta name="robots" content="index,follow" />
-        <meta property="og:title" content="Portfolio - Algorim" />
-        <meta
-          property="og:description"
-          content="Utilizing the technology of Blockchain & AI for Business. We build robust, scalable, and secure solutions for your business"
-        />
-        <meta property="og:url" content="https://algorimsoftwares.io" />
-        <meta property="og:type" content="website" />
-      </Head>
+      <SeoHead
+        title="Portfolio - Algorim - Blockchain & AI Solutions"
+        description="Utilizing the technology of Blockchain & AI for Business. We build robust, scalable, and secure solutions for your business"
+      />
 
       <div className="relative isolate overflow-hidden w-full h-full  font-[family-name:var(--font-redhat)] ">
         <svg
@@ -67,7 +56,7 @@ const Portfolio = (props: Props) => {
         </div>
         <div className="w-full">
           <div className="container mx-auto space-y-12 md:space-y-22 lg:space-y-52 p-3">
-            <CountUp/>
+            <CountUp />
             <ContactForm />
             <Consultaion />
             <FAQs />
@@ -78,4 +67,4 @@ const Portfolio = (props: Props) => {
   );
 };
 
-export default Portfolio;
+export default memo(Portfolio);

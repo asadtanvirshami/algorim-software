@@ -1,13 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { memo } from "react";
+import SeoHead from "@/components/ui/seo-head";
+
 import Hero from "./hero";
 import FAQs from "@/components/ui/faqs";
 import ContactForm from "@/components/ui/contact-form";
 import Beliefs from "./beliefts";
 import Consultaion from "@/components/ui/consultaion";
 import Contributions from "./contributions";
-import Head from "next/head";
 import CountUp from "@/components/ui/count-up";
 import { TimelineDemo } from "./timline";
 
@@ -16,21 +17,10 @@ type Props = {};
 const About = (props: Props) => {
   return (
     <React.Fragment>
-      <Head>
-        <title>About - Algorim - Blockchain & AI Solutions</title>
-        <meta
-          name="description"
-          content="Utilizing the technology of Blockchain & AI for Business. We build robust, scalable, and secure solutions for your business. Learn more about our services."
-        />
-        <meta name="robots" content="index,follow" />
-        <meta property="og:title" content="About Page - Algorim" />
-        <meta
-          property="og:description"
-          content="Utilizing the technology of Blockchain & AI for Business. We build robust, scalable, and secure solutions for your business"
-        />
-        <meta property="og:url" content="https://algorimsoftwares.io" />
-        <meta property="og:type" content="website" />
-      </Head>
+      <SeoHead
+        title=" About - Algorim - Blockchain & AI Solutions"
+        description="Utilizing the technology of Blockchain & AI for Business. We build robust, scalable, and secure solutions for your business"
+      />
 
       <div className="relative isolate overflow-hidden w-full h-full  ">
         <svg
@@ -72,10 +62,10 @@ const About = (props: Props) => {
         <div className="w-full">
           <div className="container mx-auto space-y-12 md:space-y-22 lg:space-y-52 p-3">
             <Beliefs />
-            <TimelineDemo/>
+            <TimelineDemo />
             <Consultaion />
             <Contributions />
-            <CountUp/>
+            <CountUp />
             <ContactForm />
             <FAQs />
           </div>
@@ -85,4 +75,4 @@ const About = (props: Props) => {
   );
 };
 
-export default About;
+export default memo(About);

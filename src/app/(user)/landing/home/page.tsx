@@ -7,7 +7,6 @@ import Services from "../services/services";
 import Specializing from "./specializing";
 import Update from "./update";
 import Serving from "./serving";
-import Head from "next/head";
 import { HeroScrollDemo } from "./tablet-scroll";
 import Testimonials from "./testimonials";
 import FAQs from "../../../../components/ui/faqs";
@@ -15,27 +14,17 @@ import Consultaion from "../../../../components/ui/consultaion";
 import ContactForm from "@/components/ui/contact-form";
 import CountUp from "@/components/ui/count-up";
 import Process from "./process";
+import SeoHead from "@/components/ui/seo-head";
 
 type Props = {};
 
 const page = (props: Props) => {
   return (
     <React.Fragment>
-      <Head>
-        <title>Home Page - Algorim - Blockchain & AI Solutions</title>
-        <meta
-          name="description"
-          content="Utilizing the technology of Blockchain & AI for Business. We build robust, scalable, and secure solutions for your business. Learn more about our services."
-        />
-        <meta name="robots" content="index,follow" />
-        <meta property="og:title" content="Home Page - Algorim" />
-        <meta
-          property="og:description"
-          content="Utilizing the technology of Blockchain & AI for Business. We build robust, scalable, and secure solutions for your business"
-        />
-        <meta property="og:url" content="https://algorimsoftwares.io" />
-        <meta property="og:type" content="website" />
-      </Head>
+      <SeoHead
+        title="Algorim - Blockchain & AI Solutions"
+        description=" Utilizing the technology of Blockchain & AI for Business. We build robust, scalable, and secure solutions for your business"
+      />
 
       <div className="relative isolate overflow-hidden w-full h-full  font-[family-name:var(--font-redhat)] ">
         <svg

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-sitemap": "ts-node src/scripts/generate-sitemap.ts"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -16,6 +17,7 @@
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-toast": "^1.2.2",
     "@react-three/drei": "^9.114.6",
     "@react-three/fiber": "^8.17.10",
     "@tabler/icons-react": "^3.21.0",
@@ -32,10 +34,12 @@
     "react-countup": "^6.5.3",
     "react-dom": "^18",
     "react-visibility-sensor": "^5.1.1",
+    "sitemap": "^8.0.0",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.169.0",
-    "three-globe": "^2.33.0"
+    "three-globe": "^2.33.0",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import Link from "next/link";
 
 import ThemeSwitcher from "./theme-switch";
-import { Lock, LucideLockKeyhole } from "lucide-react";
+import { LogInIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 interface MenuProps {
@@ -13,7 +13,7 @@ interface MenuProps {
 }
 
 const Navbar = () => {
-  const router = useRouter()
+  const router = useRouter();
   const Menu = [
     {
       name: "Home",
@@ -35,18 +35,6 @@ const Navbar = () => {
       name: "Privacy Policy",
       href: "/landing/privacy-policy",
     },
-    // {
-    //   name: "Careers",
-    //   href: "/landing/home",
-    // },
-    // {
-    //   name: "Blog",
-    //   href: "/landing/home",
-    // },
-    // {
-    //   name: "Case Studies",
-    //   href: "/landing/home",
-    // },
   ];
 
   return (
@@ -72,15 +60,17 @@ const Navbar = () => {
           );
         })}
       </nav>
-      <div className="flex justify-evenly space-x-3">
+      <div className="flex justify-evenly items-center space-x-3">
+        <Button
+          shimmer
+          onClick={() => router.push("/auth/signin")}
+          className="font-semibold font-[family-name:var(--font-geist-sans)]"
+        >
+          Signin
+          <LogInIcon size={18} />
+        </Button>
         <ThemeSwitcher />
         {/* <Button className="font-semibold font-[family-name:var(--font-geist-sans)]">Signin</Button> */}
-        <Button
-          onClick={() => router.push("/auth/signin")}
-          className="font-semibold rounded-full p-3 h-full font-[family-name:var(--font-geist-sans)]"
-        >
-          <LucideLockKeyhole className="w-full" />
-        </Button>
 
         <Avatar>
           <AvatarImage src="https://github.com/shadcn.png" />

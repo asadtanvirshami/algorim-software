@@ -34,10 +34,8 @@ const Hero = () => {
           </div>
         </div>
         <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-          <a
+          <div
             className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-orange-300"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             <h2 className={`mb-3 text-2xl font-semibold`}>
               Innovate{" "}
@@ -48,12 +46,10 @@ const Hero = () => {
             <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
               Discover cutting-edge solutions that drive your business forward!
             </p>
-          </a>
+          </div>
 
-          <a
+          <div
             className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-orange-300"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             <h2 className={`mb-3 text-2xl font-semibold`}>
               Transform{" "}
@@ -65,12 +61,10 @@ const Hero = () => {
               Elevate your operations with our innovative IT strategies and
               expertise.
             </p>
-          </a>
+          </div>
 
-          <a
+          <div
             className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-orange-300"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             <h2 className={`mb-3 text-2xl font-semibold`}>
               Secure{" "}
@@ -82,7 +76,7 @@ const Hero = () => {
               Protect your digital assets with our state-of-the-art
               cybersecurity solutions.
             </p>
-          </a>
+          </div>
 
           <a
             href="/auth/signup"

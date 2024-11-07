@@ -77,7 +77,7 @@ export function Globe({ globeConfig, data }: WorldProps): React.JSX.Element {
   const defaultProps = {
     pointSize: 1,
     atmosphereColor: "#ffffff",
-    showAtmosphere: true,
+    showAtmosphere: false,
     atmosphereAltitude: 0.1,
     polygonColor: "rgba(255,255,255,0.7)",
     globeColor: "#1d072e",
@@ -109,8 +109,7 @@ export function Globe({ globeConfig, data }: WorldProps): React.JSX.Element {
     };
     globeMaterial.color = new Color(globeConfig.globeColor);
     globeMaterial.emissive = new Color(globeConfig.emissive);
-    globeMaterial.emissiveIntensity = globeConfig.emissiveIntensity || 0.1;
-    globeMaterial.shininess = globeConfig.shininess || 0.9;
+  
   };
 
   const _buildData = () => {
@@ -247,7 +246,7 @@ export function World(props: WorldProps) {
   const scene = new Scene();
   scene.fog = new Fog(0xffffff, 400, 2000);
   return (
-    <Canvas scene={scene} camera={new PerspectiveCamera(50, aspect, 180, 1800)}>
+    <Canvas  scene={scene} camera={new PerspectiveCamera(50, aspect, 180, 1800)}>
       <WebGLRendererConfig />
       <ambientLight color={globeConfig.ambientLight} intensity={0.6} />
       <directionalLight

@@ -30,7 +30,7 @@ html.dark {
   --text-color: #ffffff;
   --button-bg: #333333;
   --button-text: #f0f0f0;
-  background: radial-gradient(#000000, #000000);
+  background: radial-gradient(circle, #070707 100%, #000000 100%); /* Radial gradient for dark theme */
   background-repeat: no-repeat;
 }
 
@@ -149,3 +149,29 @@ body {
   background-color: #555;
   /* Set the color of the thumb on hover */
 }
+
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  color: #000;
+}
+
+.shimmer:hover{
+  background: linear-gradient(90deg, #ff7f50 25%, #ff6347 50%, #ff7f50 75%); 
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+  color: #ffff;
+}
+
+

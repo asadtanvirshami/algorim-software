@@ -11,8 +11,6 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useToast } from "@/hooks/use-toast";
-import { useRouter } from "next/navigation";
 
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
@@ -26,8 +24,6 @@ interface SignUpForm {
 }
 
 const Auth = () => {
-  const { toast } = useToast();
-  const router = useRouter();
   const [form, setForm] = React.useState<SignUpForm>({
     firstName: "",
     lastName: "",

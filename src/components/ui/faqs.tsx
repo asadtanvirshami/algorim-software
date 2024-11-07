@@ -6,9 +6,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-type Props = {};
 
-const FAQs = (props: Props) => {
+const FAQs = () => {
   const faqs = [
     {
       question: "What services does Algorim offer?",

@@ -7,9 +7,7 @@ import FAQs from "@/components/ui/faqs";
 import CountUp from "@/components/ui/count-up";
 import SeoHead from "@/components/ui/seo-head";
 
-type Props = {};
-
-const Portfolio = (props: Props) => {
+const Portfolio = () => {
   return (
     <React.Fragment>
       <SeoHead

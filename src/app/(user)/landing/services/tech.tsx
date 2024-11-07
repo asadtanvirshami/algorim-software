@@ -170,7 +170,7 @@ const Tech = () => {
     <div className="flex  flex-col justify-center space-x-2 space-y-5 mt-16 items-center ">
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 justify-center">
         {techDescriptions.map((item) => (
-          <div className="bg-card p-4 font-[family-name:var(--font-redhat)]">
+          <div key={item.name} className="bg-card p-4 font-[family-name:var(--font-redhat)]">
             <span className="flex  items-center text-2xl justify-between space-y-3" >
               <h1>{item.name}</h1>
               <Image src={item.image} alt={item.name} className="h-12 w-12 rounded" />

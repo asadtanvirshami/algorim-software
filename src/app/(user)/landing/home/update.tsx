@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Image from "next/image";
 import React from "react";
 import pushMob from "@/assets/lottie/Push-notification-list-(iOS)-[remix].json"; 
@@ -8,12 +9,7 @@ import Slack from "@/assets/images/socials/icons8-slack-64.png";
 import Trello from "@/assets/images/socials/icons8-trello-a-web-based-list-making-application-for-multi-platform-64.png";
 import Jira from "@/assets/images/socials/icons8-jira-64.png";
 import Teams from "@/assets/images/socials/icons8-teams-64.png";
-
-// ... rest of your code ...
-
-type Props = {};
-
-const Update = (props: Props) => {
+const Update = () => {
   const Icons = [
     {
       icon: Slack,

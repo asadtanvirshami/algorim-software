@@ -1,14 +1,8 @@
-import Image from "next/image";
 import React from "react";
 import Lottie from "lottie-react";
 import revenueApp from "@/assets/lottie/Revenue-App-(Dribbble-shot)-[remix].json"; 
-// import showReel from "@/assets/lottie/Showreel-Grid-Mobile-[remix].json";
 
-// ... rest of your code ...
-
-type Props = {};
-
-const Process = (props: Props) => {
+const Process = () => {
   const productProcess = [
     {
       title: "Product Discovery",

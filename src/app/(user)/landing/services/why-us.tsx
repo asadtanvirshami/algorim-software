@@ -1,10 +1,9 @@
+/* eslint-disable react/no-unescaped-entities */
 import Lottie from "lottie-react";
 import React from "react";
 import MobileAnimation from "@/assets/lottie/Showreel-Grid-Mobile-[remix].json";
 
-type Props = {};
-
-const WhyUs = (props: Props) => {
+const WhyUs = () => {
   return (
     <section className=" font-[family-name:var(--font-redhat)]">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 justify-center items-center">

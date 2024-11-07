@@ -16,9 +16,7 @@ import CountUp from "@/components/ui/count-up";
 import Process from "./process";
 import SeoHead from "@/components/ui/seo-head";
 
-type Props = {};
-
-const page = (props: Props) => {
+const page = () => {
   return (
     <React.Fragment>
       <SeoHead

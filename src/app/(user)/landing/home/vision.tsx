@@ -1,10 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Building2, Component, GemIcon } from "lucide-react";
-
-type Props = {};
-
 const Business = [
   {
     icon: <GemIcon className="text-orange-300 " />,
@@ -23,7 +21,7 @@ const Business = [
   },
 ];
 
-const Vision = (props: Props) => {
+const Vision = () => {
   return (
     <div className="space-y-12">
       <div className="space-y-4 md:space-y-0 lg:space-y-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 p-2 w-full flex-row font-[family-name:var(--font-redhat)]">

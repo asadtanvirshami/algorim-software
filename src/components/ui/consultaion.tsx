@@ -4,9 +4,7 @@ import consult from "@/assets/images/consult.png";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-type Props = {};
-
-const Consultaion = (props: Props) => {
+const Consultaion = () => {
   return (
     <section className="flex  bg-zinc-900 dark:bg-card justify-center items-center border rounded-lg font-[family-name:var(--font-redhat)] text-white" >
       <div className="w-fit gap-12 p-6 flex items-center ">

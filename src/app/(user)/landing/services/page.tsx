@@ -10,9 +10,8 @@ import Services from "./services";
 import Tech from "./tech";
 import { MacbookScroll } from "@/components/ui/macbook-scroll";
 import WhyUs from "./why-us";
-type Props = {};
 
-const About = (props: Props) => {
+const About = () => {
   return (
     <React.Fragment>
       <Head>

@@ -1,9 +1,7 @@
-import { Handshake, Rocket, Star, UsersRoundIcon } from "lucide-react";
+
 import React from "react";
 
-type Props = {};
-
-const Hero = (props: Props) => {
+const Hero = () => {
   return (
     <div>
       <main className="flex min-h-screen flex-col items-center justify-between p-24">

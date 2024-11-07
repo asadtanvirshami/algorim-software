@@ -1,13 +1,7 @@
 import Link from "next/link";
 import React from "react";
-
-import fb from "@/assets/images/socials/icons8-facebook-30.png";
-import insta from "@/assets/images/socials/icons8-instagram-30.png";
-import Image from "next/image";
-
-type Props = {};
-
-const Footer = (props: Props) => {
+  
+const Footer = () => {
   return (
     <footer className="flex flex-col border-t-black border p-5 justify-center items-center mt-20 font-[family-name:var(--font-redhat)]">
       <div className="grid grid-cols-1 align-middle text-center container justify-center gap-5 md:grid-cols-3 lg:grid-cols-4 ">

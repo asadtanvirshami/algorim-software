@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import {
   ArrowUp,
   DiamondIcon,
@@ -61,9 +62,8 @@ const trust = [
     icon: <Hammer className="text-orange-300 mt-1 mr-2" />,
   },
 ];
-type Props = {};
 
-const Beliefs = (props: Props) => {
+const Beliefs = () => {
   return (
     <section className="justify-center items-center">
       <div className=" font-[family-name:var(--font-redhat)] space-y-12">
@@ -72,16 +72,14 @@ const Beliefs = (props: Props) => {
             {trust.map((item) => (
               <div key={item.title} className="mt-4 flex items-start p-1 ">
                 {item.icon}
-                {/* Icon */}
+
                 <div className="ml-4">
                   <li className="text-lg text-orange-300 list-none">
                     {item.title}
-                  </li>{" "}
-                  {/* Title */}
+                  </li>
                   <li className="w-full text-[15px] md:text-[16px] lg:text-[16px] md:w-full lg:w-full text-justify tracking-tight list-none">
                     {item.description}
-                  </li>{" "}
-                  {/* Description */}
+                  </li>
                 </div>
               </div>
             ))}
@@ -103,16 +101,14 @@ const Beliefs = (props: Props) => {
             {beliefsAndValues.map((item) => (
               <div key={item.title} className="mt-4 flex items-start p-1 ">
                 {item.icon}
-                {/* Icon */}
+
                 <div className="ml-4">
                   <li className="text-lg text-orange-300 list-none">
                     {item.title}
                   </li>{" "}
-                  {/* Title */}
                   <li className="w-full text-[15px]  md:w-fit md:text-[16px] lg:text-[15px] lg:w-full text-justify tracking-tight list-none">
                     {item.description}
                   </li>{" "}
-                  {/* Description */}
                 </div>
               </div>
             ))}

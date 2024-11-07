@@ -2,9 +2,7 @@ import { GlobeModel } from "./globe";
 import { GlobeIcon, HandHeart, HeartHandshakeIcon } from "lucide-react";
 import React from "react";
 
-type Props = {};
-
-const Serving = (props: Props) => {
+const Serving = () => {
   const Business = [
     {
       icon: <HandHeart className="text-red-500"  />,

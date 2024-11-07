@@ -12,9 +12,7 @@ import Contributions from "./contributions";
 import CountUp from "@/components/ui/count-up";
 import { TimelineDemo } from "./timline";
 
-type Props = {};
-
-const About = (props: Props) => {
+const About = () => {
   return (
     <React.Fragment>
       <SeoHead

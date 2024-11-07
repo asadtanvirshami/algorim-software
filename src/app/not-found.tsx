@@ -10,9 +10,9 @@ export default function NotFound() {
         Sorry, the page you are looking for does not exist.
       </p>
 
-      <a className="text-blue-500 hover:underline text-lg" href="/landing/home">
+      <Link className="text-blue-500 hover:underline text-lg" href="/landing/home">
         Go Back to Home
-      </a>
+      </Link>
     </div>
   );
 }

@@ -14,10 +14,8 @@ import { Button } from "./button";
 import { motion } from "framer-motion";
 import { HeroHighlight, Highlight } from "../ui/hero-highlight";
 
-type Props = {};
-
-const ContactForm = (props: Props) => {
-  const [condition, setCondition] = React.useState<boolean>(false);
+const ContactForm = () => {
+  // const [condition, setCondition] = React.useState<boolean>(false);
 
   const handleFormSubmission = async (
     event: React.FormEvent<HTMLFormElement>
@@ -33,9 +31,9 @@ const ContactForm = (props: Props) => {
           "d5v8gYI0Ev9r_ATt-"
         );
 
-        if (response.status === 200) {
-          setCondition(true);
-        }
+        // if (response.status === 200) {
+        //   // setCondition(true);
+        // }
       } catch (error) {
         console.error(error);
       }

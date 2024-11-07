@@ -7,9 +7,8 @@ import {
 } from "lucide-react";
 import React from "react";
 
-type Props = {};
 
-const Specializing = (props: Props) => {
+const Specializing = () => {
   const Industries = [
     {
       icon: <Landmark />,

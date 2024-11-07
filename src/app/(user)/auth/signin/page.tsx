@@ -6,7 +6,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -16,9 +15,6 @@ import { Label } from "@/components/ui/label";
 
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
-import { useToast } from "@/hooks/use-toast";
-// import { tokenCookie } from "@/utils/user-cache";
-import { useRouter } from "next/navigation";
 
 // Define the shape of the post data
 interface Credentials {
@@ -32,8 +28,6 @@ interface Error {
 }
 
 const Auth = () => {
-  const { toast } = useToast();
-  const router = useRouter();
   const [error, setError] = React.useState<Error>({
     email: false,
     password: false,
@@ -43,24 +37,24 @@ const Auth = () => {
     password: "",
   });
 
-  const handleSuccess = async (credentialResponse: any) => {
-    // console.log(credentialResponse?.credential);
-    // const request = await userSigninGoogleRequest(credentialResponse);
-    // if (!request?.error && request?.data?.success) {
-    //   await tokenCookie(request?.data?.token);
-    //   toast({
-    //     variant: "success",
-    //     title: "Sign in with google is successful",
-    //     description: "Redirecting to the dashboard.",
-    //     duration: 800,
-    //   });
-    //   router.push("/dashboard");
-    // }
-  };
+  // const handleSuccess = async (credentialResponse: any) => {
+  //   // console.log(credentialResponse?.credential);
+  //   // const request = await userSigninGoogleRequest(credentialResponse);
+  //   // if (!request?.error && request?.data?.success) {
+  //   //   await tokenCookie(request?.data?.token);
+  //   //   toast({
+  //   //     variant: "success",
+  //   //     title: "Sign in with google is successful",
+  //   //     description: "Redirecting to the dashboard.",
+  //   //     duration: 800,
+  //   //   });
+  //   //   router.push("/dashboard");
+  //   // }
+  // };
 
-  const handleError = () => {
-    console.log("Login Failed");
-  };
+  // const handleError = () => {
+  //   console.log("Login Failed");
+  // };
 
   React.useMemo(() => {
     if (credentials.email.length > 3) {
@@ -130,9 +124,7 @@ const Auth = () => {
               </CardHeader>
               <CardContent>
                 <form
-                  onSubmit={(e: any) => {
-                    // handleSignin(e);
-                  }}
+             
                 >
                   <div className="grid w-full items-center gap-4">
                     <div className="flex flex-col space-y-1.5">

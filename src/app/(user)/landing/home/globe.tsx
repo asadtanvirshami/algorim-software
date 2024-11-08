@@ -284,7 +284,7 @@ export const GlobeModel = (() => {
       >
       </motion.div>
       <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent z-40" />
-      <div className="absolute w-full h-96 md:h-72 lg:h-72  z-10">
+      <div className="absolute w-full h-96  md:h-full lg:h-full z-10">
         <World data={generateArcs} globeConfig={globeConfig} />
       </div>
     </div>

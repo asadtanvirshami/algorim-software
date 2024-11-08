@@ -22,7 +22,7 @@ const Update = () => {
   return (
     <div className="">
       <div className="grid lg:grid-cols-2 justify-stretch w-full ">
-        <Lottie style={{ height: 550 }} animationData={pushMob} loop={true} />
+        <Lottie className="h-[300px] md:h-[500px]" animationData={pushMob} loop={true} />
         <div className="font-[family-name:var(--font-redhat)]">
           <h1 className="w-full font-semibold text-3xl md:text-5xl lg:text-6xl">
             It's important for you to know what's new

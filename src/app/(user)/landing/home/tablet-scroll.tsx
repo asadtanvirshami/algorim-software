@@ -7,7 +7,7 @@ import crm from "@/assets/tab.gif";
 
 export function HeroScrollDemo() {
   return (
-    <div className="flex flex-col overflow-hidden">
+    <div className="flex-col overflow-hidden hidden md:flex lg:flex">
       <ContainerScroll
         titleComponent={
           <>

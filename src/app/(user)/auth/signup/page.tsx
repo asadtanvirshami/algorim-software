@@ -31,31 +31,9 @@ const Auth = () => {
     password: "",
   });
 
-  const handleSignup = async () => {
-    // e.preventDefault();
-    // const request = await userSignUpRequest(
-    //   form.firstName,
-    //   form.lastName,
-    //   form.email,
-    //   form.password
-    // );
-    // if (request?.error) {
-    //   toast({
-    //     variant: "destructive",
-    //     title: "Sign In failed",
-    //     description: "Email is already registered.",
-    //     duration: 800,
-    //   });
-    // }
-    // if (!request?.error && request?.data?.success) {
-    //   toast({
-    //     // variant: "success",
-    //     title: "Sign In successful",
-    //     description: "Redirecting to the signin page.",
-    //     duration: 800,
-    //   });
-    //   router.push("/auth/signup");
-    // }
+  const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(form);
   };
 
   return (
@@ -83,8 +61,8 @@ const Auth = () => {
               </CardHeader>
               <CardContent>
                 <form
-                  onSubmit={() => {
-                    handleSignup();
+                  onSubmit={(e) => {
+                    handleSignup(e);
                   }}
                 >
                   <div className="grid w-full items-center gap-4">

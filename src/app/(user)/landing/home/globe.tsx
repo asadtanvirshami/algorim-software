@@ -10,7 +10,7 @@ const World = dynamic(
   }
 );
 
-export const GlobeModel = (() => {
+export const GlobeModel = () => {
   const globeConfig = React.useMemo(
     () => ({
       pointSize: 4,
@@ -266,28 +266,27 @@ export const GlobeModel = (() => {
     }));
   }, [colors]);
   return (
-    <div className="flex flex-col items-center justify-center h-screen md:h-[33rem] lg:h-[33rem] bg-transparent relative w-full">
-    <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-full md:h-[40rem] px-4">
-      <motion.div
-        initial={{
-          opacity: 0,
-          y: 20,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
-        transition={{
-          duration: 1,
-        }}
-        className="div"
-      >
-      </motion.div>
-      <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent z-40" />
-      <div className="absolute w-full h-96  md:h-full lg:h-full z-10">
-        <World data={generateArcs} globeConfig={globeConfig} />
+    <div className=" hidden md:flex lg:flex flex-col  items-center justify-center h-screen md:h-[33rem] lg:h-[33rem] bg-transparent relative w-full">
+      <div className="max-w-7xl mx-auto w-full relative overflow-hidden h-full md:h-[40rem] px-4">
+        <motion.div
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 1,
+          }}
+          className="div"
+        ></motion.div>
+        <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent z-40" />
+        <div className="absolute w-full h-96  md:h-full lg:h-full z-10">
+          <World data={generateArcs} globeConfig={globeConfig} />
+        </div>
       </div>
     </div>
-  </div>
   );
-});
+};

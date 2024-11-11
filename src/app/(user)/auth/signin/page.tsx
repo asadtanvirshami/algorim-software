@@ -12,7 +12,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
@@ -65,39 +64,14 @@ const Auth = () => {
     }
   }, [credentials]);
 
-  // const handleSignin = async (e: HTMLFormElement) => {
-  //   e.preventDefault();
+  const handleSignin = async (e: HTMLFormElement) => {
+    e.preventDefault();
 
-  //   if (!credentials.email || !credentials.password) {
-  //     setError({ email: true, password: true });
-  //     return;
-  //   }
-
-  //   const request = await userSigninRequest(
-  //     credentials.email,
-  //     credentials.password
-  //   );
-
-  //   if (request?.error) {
-  //     toast({
-  //       variant: "destructive",
-  //       title: "Sign In failed",
-  //       description: "Incorrect email or password.",
-  //       duration: 800,
-  //     });
-  //   }
-
-  //   if (!request?.error && request?.data?.success) {
-  //     await tokenCookie(request?.data?.token);
-  //     toast({
-  //       variant: "success",
-  //       title: "Sign In successful",
-  //       description: "Redirecting to the dashboard.",
-  //       duration: 800,
-  //     });
-  //     router.push("/dashboard");
-  //   }
-  // };
+    if (!credentials.email || !credentials.password) {
+      setError({ email: true, password: true });
+      return;
+    }
+  };
 
   return (
     <div
@@ -123,9 +97,7 @@ const Auth = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form
-             
-                >
+                <form>
                   <div className="grid w-full items-center gap-4">
                     <div className="flex flex-col space-y-1.5">
                       <Label htmlFor="email">Email</Label>

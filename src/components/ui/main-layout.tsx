@@ -33,6 +33,7 @@ const MainLayout = ({ children }: LayoutProps) => {
   // Determine if the current path is for auth pages
   const isAuthPath = path === "/auth/signin" || path === "/auth/signup";
   const iLoadingPage = path === "/";
+  const isDashboard = path === "/protected-route/dashboard";
 
   return (
     <>
@@ -62,9 +63,9 @@ const MainLayout = ({ children }: LayoutProps) => {
       />
 
       {/* Conditionally render Navbar and Footer based on the current path */}
-      {!isAuthPath && !iLoadingPage && <Navbar />}
+      {!isAuthPath && !iLoadingPage && !isDashboard && <Navbar />}
       {children}
-      {!isAuthPath && !iLoadingPage && <Footer />}
+      {!isAuthPath && !iLoadingPage && !isDashboard && <Footer />}
     </>
   );
 };

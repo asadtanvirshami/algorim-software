@@ -1,8 +1,9 @@
 import React from "react";
 
-type Props = {};
-
-const DashboardLayout = (props: Props) => {
+interface DashboardLayoutProps {
+  children: React.ReactNode;
+}
+const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   return (
     <div>
       <div className="md:m-12 lg:m-12 ">
@@ -25,7 +26,9 @@ const DashboardLayout = (props: Props) => {
           </div>
           {/* <Divider className="mt-5" /> */}
         </div>
-        {/* {children} */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 p-12 gap-5">
+          {children}
+        </div>
       </div>
     </div>
   );

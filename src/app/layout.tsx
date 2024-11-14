@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Head from "next/head";
+import { Toaster } from "@/components/ui/toaster";
+import { AtomProvider } from "@/jotai/context/provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -97,7 +99,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${redhat.variable} ${revamped.variable} antialiased`}
       >
-        {children}
+        <AtomProvider>{children}</AtomProvider>
+        <Toaster />
       </body>
     </html>
   );

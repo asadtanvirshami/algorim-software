@@ -1,26 +1,35 @@
+"use client";
+import { userAtom } from "@/jotai/atoms/user/user-atom";
+import { useAtom } from "jotai";
+import moment from "moment";
 import React from "react";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
 }
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
+  const [{ user }] = useAtom(userAtom);
+  console.log(user);
+
   return (
-    <div>
+    <>
       <div className="md:m-12 lg:m-12 ">
         <div className="mt-5 ">
           <div className="md:flex lg:flex ">
             <div>
-              {/* <h1 className="font-bold text-4xl">Welcome, {user?.username}</h1> */}
+              <h1 className="font-bold text-4xl">
+                Welcome, {user?.username || ""}
+              </h1>
               <h1 className="font-semibold text-xl text-orange-200">
-                {/* {user?.email} */}
+                {user?.email}
               </h1>
             </div>
             <div className=" ml-auto ">
               <h1 className="font-semibold text-xl">
-                {/* {moment().format("MMMM Do YYYY")} */}
+                {moment().format("MMMM Do YYYY")}
               </h1>
               <h1 className="font-semibold text-xl">
-                {/* {moment().format("dddd")} */}
+                {moment().format("dddd")}
               </h1>
             </div>
           </div>
@@ -30,7 +39,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
           {children}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

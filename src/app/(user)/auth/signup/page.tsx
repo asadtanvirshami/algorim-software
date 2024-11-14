@@ -14,6 +14,10 @@ import { Label } from "@/components/ui/label";
 
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
+import { authApi } from "@/service/auth";
+import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
+
 // import { userSignUpRequest } from "@/api/user/user-api";
 
 interface SignUpForm {
@@ -24,6 +28,8 @@ interface SignUpForm {
 }
 
 const Auth = () => {
+  const { toast } = useToast();
+  const router = useRouter();
   const [form, setForm] = React.useState<SignUpForm>({
     firstName: "",
     lastName: "",
@@ -33,7 +39,31 @@ const Auth = () => {
 
   const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(form);
+    try {
+      const request = await authApi.signup(
+        form.firstName,
+        form.lastName,
+        form.email,
+        form.password
+      );
+      if (request?.data?.message === "success") {
+        toast({
+          variant: "success",
+          title: "You are registered successfully",
+          description: "Redirecting to the sign 7in.",
+          duration: 800,
+        });
+        router.push("/auth/signin");
+      }
+    } catch (error) {
+      console.error(error);
+      toast({
+        variant: "destructive",
+        title: "Failed to sign in",
+        description: error?.response?.data?.message || "Something went wrong",
+        duration: 800,
+      });
+    }
   };
 
   return (

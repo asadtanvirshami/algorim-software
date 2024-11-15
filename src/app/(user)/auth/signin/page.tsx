@@ -17,9 +17,9 @@ import Link from "next/link";
 import { authApi } from "@/service/auth";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
-import { useAtom } from "jotai";
-import { userAtom } from "@/jotai/atoms/user/user-atom";
 import { jwtDecode } from "jwt-decode";
+import { loginFailure, loginSuccess } from "@/redux/actions/user-action";
+import { useDispatch } from "react-redux";
 
 // Define the shape of the post data
 interface Credentials {
@@ -30,7 +30,7 @@ interface Credentials {
 const Auth = () => {
   const { toast } = useToast();
   const router = useRouter();
-  const [user, setUser] = useAtom(userAtom);
+  const dispatch = useDispatch();
   const [credentials, setCredentials] = React.useState<Credentials>({
     email: "",
     password: "",
@@ -73,12 +73,7 @@ const Auth = () => {
           secure: true,
           sameSite: "Strict",
         });
-        setUser({
-          token: request?.data?.accessToken,
-          user: jwtToken,
-          isLoggedIn: true, // Set login status to true
-        });
-
+        dispatch(loginSuccess(jwtToken));
         toast({
           variant: "success",
           title: "Sign in successful",
@@ -89,7 +84,6 @@ const Auth = () => {
       }
     } catch (error) {
       console.error(error);
-      setUser((prevState) => ({ ...prevState, isLoggedIn: false }));
       toast({
         variant: "destructive",
         title: "Failed to sign in",

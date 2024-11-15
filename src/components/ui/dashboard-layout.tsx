@@ -1,15 +1,15 @@
 "use client";
-import { userAtom } from "@/jotai/atoms/user/user-atom";
-import { useAtom } from "jotai";
 import moment from "moment";
 import React from "react";
+import { useSelector } from "react-redux";
+import { Separator } from "./separator";
+import ThemeSwitcher from "./theme-switch";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
 }
 const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
-  const [{ user }] = useAtom(userAtom);
-  console.log(user);
+  const user = useSelector((state: any) => state?.user?.user);
 
   return (
     <>
@@ -23,6 +23,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
               <h1 className="font-semibold text-xl text-orange-200">
                 {user?.email}
               </h1>
+              <ThemeSwitcher />
             </div>
             <div className=" ml-auto ">
               <h1 className="font-semibold text-xl">
@@ -33,11 +34,9 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
               </h1>
             </div>
           </div>
-          {/* <Divider className="mt-5" /> */}
+          <Separator className="mt-5" />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 p-12 gap-5">
-          {children}
-        </div>
+        <>{children}</>
       </div>
     </>
   );

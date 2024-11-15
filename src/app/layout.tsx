@@ -1,48 +1,48 @@
-import type { Metadata } from "next";
+import { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Head from "next/head";
 import { Toaster } from "@/components/ui/toaster";
-import { AtomProvider } from "@/jotai/context/provider";
+import StoreProvider from "@/redux/storeProvider";
+import { ReactQueryClientProvider } from "@/provider/react-query-provider";
 
+// Load local fonts
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
   weight: "100 900",
+  variable: "--font-geist-sans",
 });
 
 const revamped = localFont({
   src: "./fonts/Revamped.otf",
-  variable: "--font-revamped",
   weight: "100 900",
+  variable: "--font-revamped",
 });
 
 const redhat = localFont({
   src: "./fonts/RedHatDisplay-Regular.ttf",
-  variable: "--font-redhat",
   weight: "100 900",
+  variable: "--font-redhat",
 });
 
 export const metadata: Metadata = {
   title: "Algorim - Blockchain & AI Solutions",
   description:
-    "Utilizing the technology of Blockchain & AI for Business. We build robust, scalable, and secure solutions for your business. Learn more about our services.",
+    "Utilizing the technology of Blockchain & AI for Business. We build robust, scalable, and secure solutions for your business.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
         {/* Meta tags for SEO */}
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-
         {/* Open Graph / Facebook */}
         <meta
           property="og:title"
@@ -55,7 +55,6 @@ export default function RootLayout({
         <meta property="og:image" content="/path-to-your-image.jpg" />
         <meta property="og:url" content="https://www.algorim.com" />
         <meta property="og:type" content="website" />
-
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
@@ -67,7 +66,6 @@ export default function RootLayout({
           content="Utilizing the technology of Blockchain & AI for Business. We build robust, scalable, and secure solutions for your business."
         />
         <meta name="twitter:image" content="/path-to-your-image.jpg" />
-
         {/* Structured Data - JSON-LD */}
         <script
           type="application/ld+json"
@@ -99,7 +97,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${redhat.variable} ${revamped.variable} antialiased`}
       >
-        <AtomProvider>{children}</AtomProvider>
+        <ReactQueryClientProvider >
+          <StoreProvider>{children}</StoreProvider>
+        </ReactQueryClientProvider>
         <Toaster />
       </body>
     </html>

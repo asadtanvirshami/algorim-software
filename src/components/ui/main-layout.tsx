@@ -10,7 +10,7 @@ interface LayoutProps {
 
 const MainLayout = ({ children }: LayoutProps) => {
   const path = usePathname();
-
+  
   // Define a more specific type for cursorSettings
   const cursorSettings: {
     target: string;

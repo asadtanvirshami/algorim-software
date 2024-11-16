@@ -10,8 +10,8 @@ interface LayoutProps {
 
 const MainLayout = ({ children }: LayoutProps) => {
   const path = usePathname();
-  
-  // Define a more specific type for cursorSettings
+
+  // Define cursor settings
   const cursorSettings: {
     target: string;
     innerSize: number;
@@ -33,7 +33,7 @@ const MainLayout = ({ children }: LayoutProps) => {
   // Determine if the current path is for auth pages
   const isAuthPath = path === "/auth/signin" || path === "/auth/signup";
   const iLoadingPage = path === "/";
-  const isDashboard = path === "/protected-route/dashboard";
+  const isProtectedRoute = path.startsWith("/protected-route");
 
   return (
     <>
@@ -63,9 +63,9 @@ const MainLayout = ({ children }: LayoutProps) => {
       />
 
       {/* Conditionally render Navbar and Footer based on the current path */}
-      {!isAuthPath && !iLoadingPage && !isDashboard && <Navbar />}
+      {!isAuthPath && !iLoadingPage && !isProtectedRoute && <Navbar />}
       {children}
-      {!isAuthPath && !iLoadingPage && !isDashboard && <Footer />}
+      {!isAuthPath && !iLoadingPage && !isProtectedRoute && <Footer />}
     </>
   );
 };

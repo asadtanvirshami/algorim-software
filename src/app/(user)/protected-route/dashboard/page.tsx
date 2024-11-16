@@ -7,14 +7,22 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 import { projectApi } from "@/service/project";
+import { cookies } from "next/headers";
 
 async function page() {
   const queryClient = new QueryClient();
+  const cookieStore = cookies();
+  const userCookie = cookieStore.get("user");
+
+  if (!userCookie) return null; // If no cookie found, return null
+
+  const parsedCookie = JSON.parse(userCookie.value);
+  console.log(parsedCookie?.sub);
 
   // Prefetch the first page of data
   await queryClient.prefetchQuery({
     queryKey: ["projects", 1, 8], // Page 1 and page size 8
-    queryFn: () => projectApi.getAll(1, 8, "", "35dc6896-855c-4d56-9f3c-3096c6f710fb"),
+    queryFn: () => projectApi.getAll(1, 8, "", parsedCookie?.sub),
   });
 
   return (

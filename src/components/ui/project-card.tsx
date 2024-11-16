@@ -38,14 +38,14 @@ const ProjectCard = ({ data }: any) => {
               data?.status === "in progress" ? "aqua_gradient" : "aqua_gradient"
             }
           >
-            {data?.status === "in progress" ? data?.status : ""}
+            {data?.status === "on hold" ? data?.status : ""}
           </Badge>
         </span>
       </CardContent>
 
       <div className="flex justify-end p-4">
         <Button variant="outline">
-          <Link href={`/project/${data?.id}`}>View Info</Link>
+          <Link href={`/protected-route/dashboard/project/${data?.id}`}>View Info</Link>
           <ArrowTopRightIcon />
         </Button>
       </div>

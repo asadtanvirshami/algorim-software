@@ -54,19 +54,19 @@ const Projects = ({ initialPage, initialPageSize }: Props) => {
   if (isLoading || !data) {
     return (
       <div className="flex justify-center mt-5 gap-4 h-screen ">
-        <Loader2 className="h-96 animate-spin" color="red" />
+        <Loader2 className="h-96 animate-spin" color="orange" />
       </div>
     );
   }
 
   return (
-    <>
+    <div className="h-screen">
       <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-5 gap-4 justify-center">
         {data?.data?.map((project) => (
           <ProjectCard key={project.id} data={project} />
         ))}
       </div>
-      <div className="flex justify-center mt-4 gap-4">
+      <div className="flex justify-end mt-4 gap-4">
         <button onClick={handlePreviousPage} disabled={query.page === 1}>
           Previous
         </button>
@@ -83,7 +83,7 @@ const Projects = ({ initialPage, initialPageSize }: Props) => {
           Next
         </button>
       </div>
-    </>
+    </div>
   );
 };
 

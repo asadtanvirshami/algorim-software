@@ -1,6 +1,6 @@
 "use client";
 import React, { memo } from "react";
-// import Cookies from "js-cookie";
+import Cookies from "js-cookie";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -14,6 +14,12 @@ import { Label } from "@/components/ui/label";
 
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
+import { authApi } from "@/service/auth";
+import { useToast } from "@/hooks/use-toast";
+import { useRouter } from "next/navigation";
+import { jwtDecode } from "jwt-decode";
+import { loginFailure, loginSuccess } from "@/redux/actions/user-action";
+import { useDispatch } from "react-redux";
 
 // Define the shape of the post data
 interface Credentials {
@@ -21,16 +27,10 @@ interface Credentials {
   password: string;
 }
 
-interface Error {
-  email: boolean;
-  password: boolean;
-}
-
 const Auth = () => {
-  const [error, setError] = React.useState<Error>({
-    email: false,
-    password: false,
-  });
+  const { toast } = useToast();
+  const router = useRouter();
+  const dispatch = useDispatch();
   const [credentials, setCredentials] = React.useState<Credentials>({
     email: "",
     password: "",
@@ -55,21 +55,41 @@ const Auth = () => {
   //   console.log("Login Failed");
   // };
 
-  React.useMemo(() => {
-    if (credentials.email.length > 3) {
-      setError({ ...error, email: false });
-    }
-    if (credentials.password.length > 3) {
-      setError({ ...error, password: false });
-    }
-  }, [credentials]);
-
-  const handleSignin = async (e: HTMLFormElement) => {
+  const handleSignin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    try {
+      const request = await authApi.login(
+        credentials.email,
+        credentials.password
+      );
+      if (request?.data?.message === "success") {
+        let jwtToken = jwtDecode(request?.data?.accessToken);
 
-    if (!credentials.email || !credentials.password) {
-      setError({ email: true, password: true });
-      return;
+        Cookies.set("token", request?.data?.accessToken, {
+          secure: true,
+          sameSite: "Strict",
+        });
+        Cookies.set("user", JSON.stringify(jwtToken), {
+          secure: true,
+          sameSite: "Strict",
+        });
+        dispatch(loginSuccess(jwtToken));
+        toast({
+          variant: "success",
+          title: "Sign in successful",
+          description: "Redirecting to the dashboard.",
+          duration: 800,
+        });
+        router.push("/protected-route/dashboard");
+      }
+    } catch (error) {
+      console.error(error);
+      toast({
+        variant: "destructive",
+        title: "Failed to sign in",
+        description: error?.response?.data?.message || "Something went wrong",
+        duration: 800,
+      });
     }
   };
 
@@ -97,7 +117,7 @@ const Auth = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <form>
+                <form onSubmit={(e) => handleSignin(e)}>
                   <div className="grid w-full items-center gap-4">
                     <div className="flex flex-col space-y-1.5">
                       <Label htmlFor="email">Email</Label>
@@ -107,11 +127,6 @@ const Auth = () => {
                             ...credentials,
                             email: e.target.value,
                           })
-                        }
-                        className={
-                          error.email
-                            ? "border border-w-[0.5px] border-red-500"
-                            : "border"
                         }
                         id="email"
                         placeholder="example@gmail.com"
@@ -128,11 +143,6 @@ const Auth = () => {
                         }
                         id="password"
                         placeholder="*********"
-                        className={
-                          error.password
-                            ? "border border-w-[0.5px] border-red-500"
-                            : "border"
-                        }
                       />
                     </div>
                     <hr></hr>

@@ -18,7 +18,7 @@ async function page({ params }: { params: { id: string } }) {
   });
 
   return (
-    <div className="bg-black">
+    <div className="">
       <HydrationBoundary state={dehydrate(queryClient)}>
         <Project id={params.id} />
       </HydrationBoundary>

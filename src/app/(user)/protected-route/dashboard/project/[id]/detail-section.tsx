@@ -1,12 +1,11 @@
 import { Badge } from "@/components/ui/badge";
-import { IconExclamationCircleFilled, IconExclamationMark } from "@tabler/icons-react";
+import { IconExclamationCircle } from "@tabler/icons-react";
 import {
   Activity,
   CalendarCheckIcon,
   Clock,
   DollarSignIcon,
   Hash,
-  Radar,
 } from "lucide-react";
 import moment from "moment";
 import React from "react";
@@ -29,10 +28,10 @@ interface Item {
 }
 
 const DetailSection = ({ project }) => {
-  console.log(project);
-
+    console.log(project);
+    
   return (
-    <div className="grid md:grid  lg:grid xl:flex lg:m-auto lg:justify-center grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 mt-5 gap-4 lg:align-middle">
+    <div className="grid md:grid lg:grid  xl:flex lg:m-auto lg:justify-center grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 mt-5 gap-4 lg:align-middle">
       {[
         {
           label: "Code",
@@ -63,7 +62,7 @@ const DetailSection = ({ project }) => {
         },
         {
           label: "Approval",
-          icon: IconExclamationCircleFilled,
+          icon: IconExclamationCircle,
           value: project?.approved === true ? "Approved" : "Unapproved",
           badgeColor: project?.approved ? "green_gradient" : "orange_gradient",
         },
@@ -82,7 +81,7 @@ const DetailSection = ({ project }) => {
       ].map((item: any, index) => (
         <div
           key={index}
-          className="p-3 rounded-lg bg-black text-white border-gray-500 border-[0.5px] w-full lg:w-[200px] group"
+          className="p-3 rounded-lg bg-card border w-full lg:w-[200px] group"
         >
           <div className="flex w-full items-center">
             <span className="text-xl lg:text-2xl font-semibold mr-5">

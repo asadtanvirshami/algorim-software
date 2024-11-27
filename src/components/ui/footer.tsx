@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-  
+
 const Footer = () => {
   return (
     <footer className="flex flex-col border-t-black border p-5 justify-center items-center mt-20 font-[family-name:var(--font-redhat)]">
@@ -15,7 +15,7 @@ const Footer = () => {
             that drive growth and efficiency.
           </article>
         </div>
-        <ul className="text-sm">
+        <ul className="text-sm ">
           <li>
             <Link href={"/landing/home"}>Home</Link>
           </li>
@@ -31,6 +31,9 @@ const Footer = () => {
           <li>
             <Link href={"/landing/home"}>Careers </Link>
           </li>
+          <li>
+            <Link href={"/landing/privacy-policy"}> Privacy Policy </Link>
+          </li>
         </ul>
         <ul className="text-sm">
           <Link href={"https://www.instagram.com/algorim.io/"}>
@@ -44,8 +47,10 @@ const Footer = () => {
           </Link>
         </ul>
         <ul className="text-sm">
-          <li>Privacy Policy</li>
-          <li>Terms Of Service</li>
+          <li>Dubai, Street mein Ghoroob, mirdif</li>
+          <li>info@algorimsoftware.io</li>
+          <li>careers@algorimsoftware.io</li>
+          <li>support@algorimsoftware.io</li>
         </ul>
       </div>
       <div className="flex">

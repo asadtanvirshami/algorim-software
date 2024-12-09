@@ -8,14 +8,14 @@ import { getColor } from "@/utils/get-color";
 import Link from "next/link";
 
 const ProjectCard = ({ data }: any) => {
-  console.log(data);
+  console.log(data?.projectInfos?.com);
 
   return (
     <Card className="shadow-lg font-[family-name:var(--font-redhat)]">
       <CardHeader className="flex flex-row  justify-between items-center">
         <div className="flex items-center gap-3">
           <Progress
-            value={data?.projectInfos?.completion_percentage}
+            value={data?.projectInfos[0].completion_percentage||"0"}
             size={40}
           />
 
@@ -38,7 +38,7 @@ const ProjectCard = ({ data }: any) => {
               data?.status === "in progress" ? "aqua_gradient" : "aqua_gradient"
             }
           >
-            {data?.status === "on hold" ? data?.status : ""}
+            {data?.status }
           </Badge>
         </span>
       </CardContent>

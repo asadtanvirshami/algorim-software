@@ -6,6 +6,7 @@ import ProjectCard from "@/components/ui/project-card";
 import { Loader2, PlusCircle } from "lucide-react";
 import { useSelector } from "react-redux";
 import { Button } from "@/components/ui/button";
+import io from "socket.io-client";
 
 type Props = {
   initialPage: number;
@@ -20,7 +21,7 @@ const Projects = ({ initialPage, initialPageSize }: Props) => {
     page: initialPage,
     pageSize: initialPageSize,
   });
-
+  const [updates, setUpdates] = useState([]);
   const user = useSelector((state: any) => state.user.user);
 
   const {
@@ -35,7 +36,92 @@ const Projects = ({ initialPage, initialPageSize }: Props) => {
       projectApi.getAll(query.page, query.pageSize, query.status, user?.sub),
   });
 
+  const [projects, setProjects] = useState([]);
   const totalPages = Math.ceil(data?.total / query.pageSize);
+
+  React.useEffect(() => {
+    if (data?.data) {
+      setProjects(data.data);
+    }
+  }, [data]);
+
+  const socket = io("http://localhost:8080");
+  React.useEffect(() => {
+    const updateProject = (notification, field) => {
+      console.log("Notification received:", notification);
+      if (field === "completion_percentage") {
+        setProjects((prevProjects) => {
+          const tempIndex = prevProjects.findIndex(
+            (project) => project.id === notification.projectId
+          );
+
+          if (tempIndex === -1) {
+            console.warn("Project not found for ID:", notification.projectId);
+            return prevProjects;
+          }
+          const updatedProjects = prevProjects.map((project, index) => {
+            if (index === tempIndex) {
+              return {
+                ...project,
+                projectInfos: project.projectInfos.map((info, i) =>
+                  i === 0 ? { ...info, [field]: notification[field] } : info
+                ),
+              };
+            }
+            return project;
+          });
+          console.log(updatedProjects, "updated");
+
+          return updatedProjects;
+        });
+      } else {
+        setProjects((prevProjects) => {
+          const tempIndex = prevProjects.findIndex(
+            (project) => project.id === notification.projectId
+          );
+
+          if (tempIndex === -1) {
+            console.warn("Project not found for ID:", notification.projectId);
+            return prevProjects;
+          }
+
+          // Update the specific field dynamically
+          const updatedProjects = prevProjects.map((project, index) =>
+            index === tempIndex
+              ? { ...project, [field]: notification[field] }
+              : project
+          );
+
+          return updatedProjects;
+        });
+      }
+
+      setUpdates((prevUpdates) => [...prevUpdates, notification]);
+    };
+
+    // Event listeners
+    socket.on("projectStatusUpdate", (notification) =>
+      updateProject(notification, "status")
+    );
+    socket.on("projectApprovalUpdate", (notification) =>
+      updateProject(notification, "approved")
+    );
+    socket.on("projectActiveUpdate", (notification) =>
+      updateProject(notification, "active")
+    );
+    socket.on("projectCompletionUpdate", (notification) =>
+      updateProject(notification, "completion_percentage")
+    );
+
+    console.log(projects);
+    // Cleanup on unmount
+    return () => {
+      socket.off("projectStatusUpdate");
+      socket.off("projectApprovalUpdate");
+      socket.off("projectActiveUpdate");
+      socket.off("projectCompletionUpdate");
+    };
+  }, [socket]);
 
   const handlePreviousPage = () => {
     if (query.page > 1) {
@@ -65,6 +151,11 @@ const Projects = ({ initialPage, initialPageSize }: Props) => {
     <React.Fragment>
       <div className="h-screen">
         <div className="flex justify-end m-5">
+          {updates.map((update, index) => (
+            <li key={index}>
+              Project ID: {update.projectId} - Status: {update.status}
+            </li>
+          ))}
           <Button
             onClick={() => setIsOpen((prev) => !prev)}
             className="bg-gradient-to-r from-orange-400 to-orange-500 text-white font-semibold"
@@ -73,10 +164,10 @@ const Projects = ({ initialPage, initialPageSize }: Props) => {
           </Button>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-5 gap-4 justify-center">
-          {data?.data?.map((project) => (
+          {projects.map((project) => (
             <ProjectCard key={project.id} data={project} />
           ))}
-          {data?.data?.length === 0 && (
+          {projects.length === 0 && (
             <h1 className="text-center text-2xl font-bold">
               No projects found
             </h1>

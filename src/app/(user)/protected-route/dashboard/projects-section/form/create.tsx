@@ -49,7 +49,7 @@ interface ServiceSelectionProps {
 }
 
 export function ProjectForm({ setStep }: ServiceSelectionProps) {
-  const user = useSelector((state) => state?.user?.user);
+  const user = useSelector((state: any) => state.user.user);
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
 
   const services = [

@@ -21,7 +21,7 @@ const ThemeSwitcher = () => {
         theme === "light" ? "bg-gray-200" : "bg-orange-400"
       }`}
     >
-      {theme === "light" ? <Moon /> : <Sun />}
+      {theme === "light" ? <Moon size={20}/> : <Sun size={20}/>}
     </button>
   );
 };

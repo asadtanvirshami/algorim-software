@@ -31,7 +31,7 @@ const DetailSection = ({ project }) => {
     console.log(project);
     
   return (
-    <div className="grid md:grid lg:grid  xl:flex lg:m-auto lg:justify-center grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 mt-5 gap-4 lg:align-middle">
+    <div className="grid md:grid lg:grid  xl:flex lg:m-auto lg:justify-center grid-cols-1 md:grid-cols-3 lg:grid-cols-4 mt-5 gap-4 lg:align-middle">
       {[
         {
           label: "Code",
@@ -81,23 +81,24 @@ const DetailSection = ({ project }) => {
       ].map((item: any, index) => (
         <div
           key={index}
-          className="p-3 rounded-lg bg-card border w-full lg:w-[200px] group"
+          className="p-3 rounded-lg bg-card border w-full group "
         >
           <div className="flex w-full items-center">
-            <span className="text-xl lg:text-2xl font-semibold mr-5">
+            <span className="text-xl lg:text-xl font-semibold mr-5">
               <p>{item.label}</p>
             </span>
             <div className="flex justify-end w-full relative">
               <item.icon className="text-xl lg:text-3xl relative z-10 text-white group-hover:animate-glow" />
-              <span className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-500 to-purple-500 blur-md opacity-50 group-hover:opacity-100 transition duration-500"></span>
+              <span className="absolute inset-0 rounded-full blur-md opacity-50 group-hover:opacity-100 transition duration-500"></span>
+              {/* <span className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-500 to-orange-500 blur-md opacity-50 group-hover:opacity-100 transition duration-500"></span> */}
             </div>
           </div>
           {item.label === "Budget" ? (
-            <p className="mt-2 md:text-xl lg:text-2xl font-bold">
+            <p className="mt-2 md:text-xl lg:text-xl font-bold">
               {item?.value}
             </p>
           ) : (
-            <div className="mt-2">
+            <div className="mt-2 text-white">
               <Badge variant={item.badgeColor}>{item.value}</Badge>
             </div>
           )}

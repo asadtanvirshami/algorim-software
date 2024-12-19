@@ -12,6 +12,14 @@ interface PaginatedResponse<T> {
   total: number; // Total number of items in the database
 }
 const projectApi = {
+  create: async (data: Project): Promise<Project> => {
+    const response = await axios.post<Project>(
+      (process.env.NEXT_PUBLIC_API_URL as string) + "project/create",
+      data
+    );
+    return response.data;
+  },
+
   getAll: async (
     page: number,
     limit: number,

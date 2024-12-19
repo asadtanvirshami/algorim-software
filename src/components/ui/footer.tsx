@@ -17,19 +17,19 @@ const Footer = () => {
         </div>
         <ul className="text-sm ">
           <li>
-            <Link href={"/landing/home"}>Home</Link>
+            <Link href={"/"}>Home</Link>
           </li>
           <li>
-            <Link href={"/landing/home"}>About Us</Link>
+            <Link href={"/landing/about"}>About Us</Link>
           </li>
           <li>
-            <Link href={"/landing/home"}>Services</Link>
+            <Link href={"/landing/services"}>Services</Link>
           </li>
           <li>
-            <Link href={"/landing/home"}>Portfolio</Link>
+            <Link href={"/landing/portfolio"}>Portfolio</Link>
           </li>
           <li>
-            <Link href={"/landing/home"}>Careers </Link>
+            <Link href={"/"}>Careers </Link>
           </li>
           <li>
             <Link href={"/landing/privacy-policy"}> Privacy Policy </Link>

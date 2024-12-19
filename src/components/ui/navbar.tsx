@@ -66,23 +66,23 @@ const NavLink: React.FC<NavLinkProps> = ({ name, href }) => {
 const links = [
   {
     name: "Home",
-    href: "/landing/home",
+    href: "/",
   },
   {
     name: "About",
-    href: "/landing/about",
+    href: "/about",
   },
   {
     name: "Services",
-    href: "/landing/services",
+    href: "/services",
   },
   {
     name: "Portfolio",
-    href: "/landing/portfolio",
+    href: "/portfolio",
   },
   {
     name: "Privacy Policy",
-    href: "/landing/privacy-policy",
+    href: "/privacy-policy",
   },
 ];
 

@@ -29,11 +29,11 @@ const DocumentUpload: React.FC<DocumentProps> = ({ setStep }) => {
     try {
       setIsUploading(true);
       setUploadStatus(null);
-      const uploadedDoc = uploadApi.document(file);
-      if (uploadedDoc) {
-        setUploadStatus("File uploaded successfully!");
-        setStep(1); // Proceed to the next step after a successful upload
-      }
+      // const uploadedDoc = uploadApi.document(File);
+      // if (uploadedDoc) {
+      //   setUploadStatus("File uploaded successfully!");
+      //   setStep(1); // Proceed to the next step after a successful upload
+      // }
     } catch (error) {
       setUploadStatus("Failed to upload file. Please try again.");
     } finally {

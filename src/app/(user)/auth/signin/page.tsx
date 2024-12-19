@@ -20,7 +20,8 @@ import { useRouter } from "next/navigation";
 import { jwtDecode } from "jwt-decode";
 import { loginFailure, loginSuccess } from "@/redux/actions/user-action";
 import { useDispatch } from "react-redux";
-
+import { GoogleLogin } from "@react-oauth/google";
+import { Separator } from "@/components/ui/separator";
 // Define the shape of the post data
 interface Credentials {
   email: string;
@@ -36,24 +37,30 @@ const Auth = () => {
     password: "",
   });
 
-  // const handleSuccess = async (credentialResponse: any) => {
-  //   // console.log(credentialResponse?.credential);
-  //   // const request = await userSigninGoogleRequest(credentialResponse);
-  //   // if (!request?.error && request?.data?.success) {
-  //   //   await tokenCookie(request?.data?.token);
-  //   //   toast({
-  //   //     variant: "success",
-  //   //     title: "Sign in with google is successful",
-  //   //     description: "Redirecting to the dashboard.",
-  //   //     duration: 800,
-  //   //   });
-  //   //   router.push("/dashboard");
-  //   // }
-  // };
+  const handleSuccess = async (credentialResponse: any) => {
+    console.log(credentialResponse?.credential);
+    const request = await authApi.googleSignin(credentialResponse);
+    if (request?.data?.success) {
+      Cookies.set("token", request?.data?.token);
+      toast({
+        variant: "success",
+        title: "Sign in with google is successful",
+        description: "Redirecting to the dashboard.",
+        duration: 800,
+      });
+      router.push("/dashboard");
+    }
+  };
 
-  // const handleError = () => {
-  //   console.log("Login Failed");
-  // };
+  const handleError = () => {
+    console.log("Login Failed");
+    toast({
+      variant: "destructive",
+      title: "Sign in failed with google",
+      description: "Please try again later.",
+      duration: 800,
+    });
+  };
 
   const handleSignin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -145,14 +152,6 @@ const Auth = () => {
                         placeholder="*********"
                       />
                     </div>
-                    <hr></hr>
-                    <div className="mx-auto">
-                      {/* <GoogleLogin
-                        onSuccess={handleSuccess}
-                        onError={handleError}
-                        useOneTap
-                      /> */}
-                    </div>
                   </div>
                   <div className="text-sm mt-4">
                     Click here to{" "}
@@ -168,6 +167,16 @@ const Auth = () => {
                       Continue
                       <ArrowRightIcon className="ml-2 h-5 w-5" />
                     </Button>
+                  </div>
+                  <Separator className="mt-5 mb-3" />
+                  <div className="py-2 flex">
+                    <div className="mx-auto">
+                      <GoogleLogin
+                        onSuccess={handleSuccess}
+                        onError={handleError}
+                        useOneTap
+                      />
+                    </div>
                   </div>
                 </form>
               </CardContent>

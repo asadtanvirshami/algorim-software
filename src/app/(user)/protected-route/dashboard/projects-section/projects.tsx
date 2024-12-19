@@ -7,6 +7,15 @@ import { Loader2, PlusCircle } from "lucide-react";
 import { useSelector } from "react-redux";
 import { Button } from "@/components/ui/button";
 import io from "socket.io-client";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { ProjectForm } from "./form/create";
 
 type Props = {
   initialPage: number;
@@ -15,6 +24,7 @@ type Props = {
 
 const Projects = ({ initialPage, initialPageSize }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [step, setStep] = useState(0);
   const [query, setQuery] = useState({
     active: 0,
     status: "",
@@ -24,12 +34,7 @@ const Projects = ({ initialPage, initialPageSize }: Props) => {
   const [updates, setUpdates] = useState([]);
   const user = useSelector((state: any) => state.user.user);
 
-  const {
-    data,
-    error,
-    isLoading,
-    refetch: refetchStatus,
-  } = useQuery({
+  const { data, error, isLoading } = useQuery({
     queryKey: ["projects", query.page, query.pageSize, query.status, user?.sub],
     enabled: user != null,
     queryFn: () =>
@@ -191,6 +196,17 @@ const Projects = ({ initialPage, initialPageSize }: Props) => {
           </button>
         </div>
       </div>
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogContent
+          className="max-h-[900px] overflow-y-auto text-left"
+          onInteractOutside={(e) => e.preventDefault()}
+        >
+          <DialogHeader>
+            <DialogTitle className="text-md text-left">Project Creation</DialogTitle>
+            {<ProjectForm setStep={setStep} />}
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
     </React.Fragment>
   );
 };

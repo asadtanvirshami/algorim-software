@@ -1,19 +1,19 @@
 "use client";
 
 import React from "react";
-import Hero from "../(user)/landing/home/hero";
-import Vision from "../(user)/landing/home/vision";
-import Services from "../(user)/landing/services/services";
-import Specializing from "../(user)/landing/home//specializing";
-import Update from "../(user)/landing/home/update";
-import Serving from "../(user)/landing/home/serving";
-import { HeroScrollDemo } from "../(user)/landing/home/tablet-scroll";
-import Testimonials from "../(user)/landing/home/testimonials";
+import Hero from "./home/hero";
+import Vision from "./home/vision";
+import Services from "./services/services";
+import Specializing from "./home//specializing";
+import Update from "./home/update";
+import Serving from "./home/serving";
+import { HeroScrollDemo } from "./home/tablet-scroll";
+import Testimonials from "./home/testimonials";
 import FAQs from "@/components/ui/faqs";
 import Consultaion from "@/components/ui/consultaion";
 import ContactForm from "@/components/ui/contact-form";
 import CountUp from "@/components/ui/count-up";
-import Process from "../(user)/landing/home/process";
+import Process from "./home/process";
 import SeoHead from "@/components/ui/seo-head";
 
 const page = () => {

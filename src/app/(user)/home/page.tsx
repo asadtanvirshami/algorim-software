@@ -3,14 +3,14 @@
 import React from "react";
 import Hero from "./hero";
 import Vision from "./vision";
-import Services from "../services/services";
+import Services from "@/app/(user)/services/services";
 import Specializing from "./specializing";
 import Update from "./update";
 import Serving from "./serving";
 import { HeroScrollDemo } from "./tablet-scroll";
 import Testimonials from "./testimonials";
-import FAQs from "../../../../components/ui/faqs";
-import Consultaion from "../../../../components/ui/consultaion";
+import FAQs from "@/components/ui/faqs";
+import Consultaion from "@/components/ui/consultaion";
 import ContactForm from "@/components/ui/contact-form";
 import CountUp from "@/components/ui/count-up";
 import Process from "./process";

@@ -2,7 +2,7 @@ import Navbar from "./navbar";
 import AnimatedCursor from "react-animated-cursor";
 import Footer from "./footer";
 import { usePathname } from "next/navigation";
-
+import { GoogleOAuthProvider } from "@react-oauth/google";
 interface LayoutProps {
   children: React.ReactNode;
   navCollapsedSize?: number;
@@ -35,7 +35,7 @@ const MainLayout = ({ children }: LayoutProps) => {
   const isProtectedRoute = path.startsWith("/protected-route");
 
   return (
-    <>
+    <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID}>
       <AnimatedCursor
         innerSize={8}
         outerSize={8}
@@ -62,10 +62,10 @@ const MainLayout = ({ children }: LayoutProps) => {
       />
 
       {/* Conditionally render Navbar and Footer based on the current path */}
-      {!isAuthPath  && !isProtectedRoute && <Navbar />}
+      {!isAuthPath && !isProtectedRoute && <Navbar />}
       {children}
-      {!isAuthPath  && !isProtectedRoute && <Footer />}
-    </>
+      {!isAuthPath && !isProtectedRoute && <Footer />}
+    </GoogleOAuthProvider>
   );
 };
 

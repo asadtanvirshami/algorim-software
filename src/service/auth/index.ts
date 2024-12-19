@@ -37,6 +37,14 @@ const authApi = {
       }
     );
   },
+  googleSignin: (tokenResponse: string) => {
+    return axios.post(
+      (process.env.NEXT_PUBLIC_API_URL as string) + "auth/google-signin",
+      {
+        token: tokenResponse?.credential,
+      }
+    );
+  },
 };
 
 export { authApi };

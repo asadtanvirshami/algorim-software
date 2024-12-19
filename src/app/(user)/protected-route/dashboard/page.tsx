@@ -18,7 +18,7 @@ async function page() {
   const token = cookieStore.get("token");
 
   if (!userCookie || !token) {
-    return null; // If cookies or token not found, return nothing
+    return redirect("/auth/signin"); // If cookies or token not found, return nothing
   }
 
   const parsedCookie = JSON.parse(userCookie.value);
@@ -32,17 +32,14 @@ async function page() {
   if (token) {
     try {
       const session = await authApi.verfication(token.value);
-      console.log(session, "SESS(ON");
-
       if (session.status !== 200) {
-
         redirect("/auth/signin");
         return;
       }
     } catch (error) {
       console.error("Verification failed:", error);
-      redirect("/auth/signin"); 
-      return; 
+      redirect("/auth/signin");
+      return;
     }
   }
 

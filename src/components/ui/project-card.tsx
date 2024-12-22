@@ -49,7 +49,7 @@ const ProjectCard = ({ data }: any) => {
 
       <div className="flex justify-end p-4">
         <Button variant="outline">
-          <Link href={`/protected-route/dashboard/project/${data?.id}`}>
+          <Link href={`/protected-route/project/${data?.id}`}>
             View Info
           </Link>
           <ArrowTopRightIcon />

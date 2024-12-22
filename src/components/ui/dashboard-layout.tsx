@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { useRouter } from "next/navigation";
-import { Bell, LogOut, Router, Settings } from "lucide-react";
+import { Bell, LogOut, Settings } from "lucide-react";
 import io from "socket.io-client";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";

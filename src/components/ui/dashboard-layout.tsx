@@ -95,10 +95,10 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   }, [socket]);
 
   async function getNotifications() {
-    const notifications = await notificationApi.get(user?.sub);
+    const notifications: any = await notificationApi.get(user?.sub);
     let tempState = [];
     if (notifications) {
-      notifications.forEach((notification) => {
+      notifications?.forEach((notification) => {
         notification.type === "status" &&
           tempState.push({
             id: notification.id,
@@ -139,7 +139,6 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
       getNotifications();
     }
   }, []);
-
 
   const hasUnreadNotifications = updates.some((update) => !update.view);
 

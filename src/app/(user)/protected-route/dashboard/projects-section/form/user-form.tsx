@@ -51,7 +51,7 @@ const UserForm = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const dispatch = useDispatch();
-  const user = useSelector((state) => state?.user?.user);
+  const user = useSelector((state: any) => state?.user?.user);
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -76,8 +76,8 @@ const UserForm = () => {
   });
 
   const mutation = useMutation({
-    mutationFn: (data) => userApi.update(data),
-    onSuccess: (data) => {
+    mutationFn: (data:any) => userApi.update(data),
+    onSuccess: (data:any) => {
       queryClient.invalidateQueries({ queryKey: ["users"] });
       Cookies.set("user", JSON.stringify(data), {
         secure: true,

@@ -10,14 +10,21 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 import { useRouter } from "next/navigation";
-import { Bell, LogOut, Settings } from "lucide-react";
+import { Bell, LogOut, Settings, ShieldIcon } from "lucide-react";
 import io from "socket.io-client";
 import Cookies from "js-cookie";
 import { useDispatch } from "react-redux";
 import { logout } from "@/redux/actions/user-action";
 import { notificationApi } from "@/service/notification";
+import UserForm from "@/app/(user)/protected-route/dashboard/projects-section/form/user-form";
 interface DashboardLayoutProps {
   children: React.ReactNode;
 }
@@ -26,6 +33,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const [updates, setUpdates] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   const socket = io("http://localhost:8080");
   React.useEffect(() => {
@@ -127,10 +135,11 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
     setUpdates(tempState);
   };
   useEffect(() => {
-    if(user){
+    if (user) {
       getNotifications();
     }
   }, []);
+
 
   const hasUnreadNotifications = updates.some((update) => !update.view);
 
@@ -141,7 +150,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
           <div className="md:flex lg:flex ">
             <div>
               <h1 className="font-bold capitalize text-lg">
-                Welcome, {user?.username || ""}
+                Welcome, {user?.firstName + user?.lastName || ""}
               </h1>
               <h1 className="font-semibold text-xl text-orange-200">
                 {user?.email}
@@ -167,7 +176,9 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                   <DropdownMenuContent>
                     {updates.reverse().map((update) => {
                       return (
-                        <DropdownMenuLabel key={update.id}>{update?.message}</DropdownMenuLabel>
+                        <DropdownMenuLabel key={update.id}>
+                          {update?.message}
+                        </DropdownMenuLabel>
                       );
                     })}
                   </DropdownMenuContent>
@@ -187,7 +198,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                 <button className="rounded-full p-2 bg-card border text-black dark:text-white">
                   <Settings
                     onClick={() => {
-                      router.push("/protected-route/user/profile");
+                      setIsOpen(true);
                     }}
                     size={20}
                   />
@@ -199,6 +210,22 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         </div>
         <>{children}</>
       </div>
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogContent
+          className="max-h-[900px] overflow-y-auto text-left"
+          onInteractOutside={(e) => e.preventDefault()}
+        >
+          <DialogHeader>
+            <div className="flex items-center justify-center gap-4">
+              <DialogTitle className="text-lg text-left">
+                Account & Security
+              </DialogTitle>
+              <ShieldIcon />
+            </div>
+          </DialogHeader>
+          {<UserForm />}
+        </DialogContent>
+      </Dialog>
     </>
   );
 };

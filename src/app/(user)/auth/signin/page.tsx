@@ -1,5 +1,5 @@
 "use client";
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import Cookies from "js-cookie";
 import { Button } from "@/components/ui/button";
 import {
@@ -18,10 +18,11 @@ import { authApi } from "@/service/auth";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import { jwtDecode } from "jwt-decode";
-import { loginFailure, loginSuccess } from "@/redux/actions/user-action";
+import { loginSuccess } from "@/redux/actions/user-action";
 import { useDispatch } from "react-redux";
 import { GoogleLogin } from "@react-oauth/google";
 import { Separator } from "@/components/ui/separator";
+import { Loader2 } from "lucide-react";
 // Define the shape of the post data
 interface Credentials {
   email: string;
@@ -32,13 +33,13 @@ const Auth = () => {
   const { toast } = useToast();
   const router = useRouter();
   const dispatch = useDispatch();
+  const [isLoading, isSetLoading] = useState(false);
   const [credentials, setCredentials] = React.useState<Credentials>({
     email: "",
     password: "",
   });
 
   const handleSuccess = async (credentialResponse: any) => {
-    console.log(credentialResponse?.credential);
     const request = await authApi.googleSignin(credentialResponse);
     if (request?.data?.success) {
       Cookies.set("token", request?.data?.token);
@@ -64,6 +65,9 @@ const Auth = () => {
 
   const handleSignin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (credentials.email === "" || credentials.password === "") return;
+    credentials.email = credentials.email.toLowerCase();
+    isSetLoading(true);
     try {
       const request = await authApi.login(
         credentials.email,
@@ -87,10 +91,12 @@ const Auth = () => {
           description: "Redirecting to the dashboard.",
           duration: 800,
         });
+        isSetLoading(false);
         router.push("/protected-route/dashboard");
       }
     } catch (error) {
       console.error(error);
+      isSetLoading(false);
       toast({
         variant: "destructive",
         title: "Failed to sign in",
@@ -162,13 +168,17 @@ const Auth = () => {
                   <div className="flex justify-end mt-4">
                     <Button
                       type="submit"
-                      className=" bg-gradient-to-r from-orange-300 to-orange-500 text-white"
+                      disabled={isLoading}
+                      className=" bg-gradient-to-r border-orange-400 from-orange-300 to-orange-500 text-white"
                     >
-                      Continue
-                      <ArrowRightIcon className="ml-2 h-5 w-5" />
+                      Signin{" "}
+                      {!isLoading && (
+                        <ArrowRightIcon className="ml-2 h-5 w-5" />
+                      )}
+                      {isLoading && <Loader2 className=" animate-spin" />}
                     </Button>
                   </div>
-                  <Separator className="mt-5 mb-3" />
+                  {/* <Separator className="mt-5 mb-3" />
                   <div className="py-2 flex">
                     <div className="mx-auto">
                       <GoogleLogin
@@ -177,7 +187,7 @@ const Auth = () => {
                         useOneTap
                       />
                     </div>
-                  </div>
+                  </div> */}
                 </form>
               </CardContent>
             </Card>

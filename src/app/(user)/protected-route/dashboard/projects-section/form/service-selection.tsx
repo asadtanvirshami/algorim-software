@@ -22,7 +22,6 @@ const ServiceSelection = ({ selectedServices, setSelectedServices }: any) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [filteredServices, setFilteredServices] = useState(services);
 
-  // Handle the search input change and filter services
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const term = e.target.value;
     setSearchTerm(term);
@@ -38,7 +37,6 @@ const ServiceSelection = ({ selectedServices, setSelectedServices }: any) => {
     }
   };
 
-  // Add service on "Enter" key press if it's a valid suggestion
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && searchTerm) {
       const service = services.find(

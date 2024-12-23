@@ -196,12 +196,13 @@ export function ProjectForm({ setStep }: ServiceSelectionProps) {
             <Button
               variant="outline"
               type="submit"
+              className="w-28 bg-green-500"
               disabled={mutation.isPending}
             >
               {mutation.isPending ? (
                 <Loader2 className="animate-spin" />
               ) : (
-                "Continue"
+                "Save"
               )}
             </Button>
           }

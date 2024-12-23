@@ -17,22 +17,6 @@ declare module "three-globe" {
   export type ThreeGlobeType = typeof ThreeGlobe;
 }
 
-const ThreeGlobeModule:any = dynamic(() => import("three-globe"), {
-  ssr: false,
-  loading: () => <div>Loading Globe...</div>,
-});
-
-const GlobeNEW = dynamic(
-  () =>
-    Promise.resolve(ThreeGlobeModule).then(
-      ({ ThreeGlobe: ThreeGlobeType }) => ThreeGlobeType
-    ),
-  {
-    ssr: false,
-    loading: () => <div>Loading Globe...</div>,
-  }
-);
-
 declare module "@react-three/fiber" {
   interface ThreeElements {
     threeGlobe: Object3DNode<ThreeGlobe, typeof ThreeGlobe>;
@@ -265,7 +249,7 @@ export function WebGLRendererConfig() {
 }
 
 function Mesh() {
-  const meshRef = useRef();
+  const meshRef: any = useRef();
   useFrame((state, delta) => {
     if (meshRef.current) {
       meshRef.current.position.x += delta;

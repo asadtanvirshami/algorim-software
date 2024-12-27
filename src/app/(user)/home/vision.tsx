@@ -37,7 +37,7 @@ const Vision = () => {
             a software solution that's just right for your business.
           </article>
           <Button className=" bg-orange-400 hover:text-black  dark:text-white hover:bg-card">
-            <Link href="/landing/home">
+            <Link href="/auth/signin">
               Learn More About Our Streamline Process
             </Link>
           </Button>

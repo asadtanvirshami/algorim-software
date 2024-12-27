@@ -11,7 +11,6 @@ import {
 } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import countries from "@/data/globe.json";
-import dynamic from "next/dynamic";
 
 declare module "three-globe" {
   export type ThreeGlobeType = typeof ThreeGlobe;

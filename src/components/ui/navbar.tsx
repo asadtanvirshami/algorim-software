@@ -3,7 +3,8 @@ import { useState } from "react";
 import ThemeSwitcher from "./theme-switch";
 import Link from "next/link";
 import { Button } from "./button";
-import { Menu } from "lucide-react";
+import { LogIn, Menu } from "lucide-react";
+import { useRouter } from "next/navigation";
 // import { useRouter } from "next/navigation";
 // import ChevronDownIcon from "../Assets/ChevronDown";
 // import ChevronUpGradientIcon from "../Assets/ChevronUpGradient";
@@ -89,6 +90,7 @@ const links = [
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isOpen] = useState(false);
+  const router = useRouter();
 
   const toogle = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -104,7 +106,6 @@ function Navbar() {
         </div>
         <div className="hidden md:flex md:space-x-10">
           {links.map(function (link) {
-            console.log("test");
             return (
               <div key={Math.random().toString()}>
                 <NavLink name={link.name} href={link.href} />
@@ -114,6 +115,9 @@ function Navbar() {
         </div>
         <div className="relative hidden md:flex md:items-center space-x-2 ">
           <ThemeSwitcher />
+          <Button size="sm" onClick={()=>{router.push("/auth/signin")}}>
+            Login <LogIn />
+          </Button>
           {/* <TryProductsButton open={isOpen} /> */}
           {isOpen && (
             <div className="absolute w-[225px] h-full top-14 -left-10 dark:text-white">
@@ -156,7 +160,6 @@ function Navbar() {
         } md:hidden px-2 pt-2 pb-4`}
       >
         {links.map(function (link) {
-          console.log("test");
           return (
             <Link
               href={link.href}
@@ -169,6 +172,9 @@ function Navbar() {
         })}
         <div className="relative w-full text-black dark:text-white mt-3">
           <div className="flex justify-center">
+          <Button size="sm" onClick={()=>{router.push("/auth/signin")}}>
+            Login <LogIn />
+          </Button>
             {/* <TryProductsButton /> */}
           </div>
         </div>

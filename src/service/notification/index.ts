@@ -11,10 +11,15 @@ interface PaginatedResponse<T> {
   total: number; // Total number of items in the database
 }
 const notificationApi = {
-  get: async (userId: string): Promise<Notification> => {
+  get: async (
+    userId: string,
+    page: number,
+    limit: number
+  ): Promise<Notification> => {
     const response = await axios.get<any>(
-      (process.env.NEXT_PUBLIC_API_URL as string) + `notifications/get?userId=${userId}`,
-    );
+      (process.env.NEXT_PUBLIC_API_URL as string) +
+        `notifications/get?userId=${userId}&page=${page}&limit=${limit}`
+    )
     return response.data;
   },
 

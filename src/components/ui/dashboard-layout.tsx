@@ -1,9 +1,19 @@
 "use client";
+
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
 import moment from "moment";
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { Separator } from "./separator";
+import debounce from "lodash.debounce";
+import io from "socket.io-client";
+import Cookies from "js-cookie";
+import { Bell, LogOut, Settings, ShieldIcon } from "lucide-react";
+
+import { logout } from "@/redux/actions/user-action";
+import { notificationApi } from "@/service/notification";
+import UserForm from "@/app/(user)/protected-route/dashboard/projects-section/form/user-form";
 import ThemeSwitcher from "./theme-switch";
+import { Separator } from "./separator";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,68 +26,52 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { Button } from "./button";
 
-import { useRouter } from "next/navigation";
-import { Bell, LogOut, Settings, ShieldIcon } from "lucide-react";
-import io from "socket.io-client";
-import Cookies from "js-cookie";
-import { useDispatch } from "react-redux";
-import { logout } from "@/redux/actions/user-action";
-import { notificationApi } from "@/service/notification";
-import UserForm from "@/app/(user)/protected-route/dashboard/projects-section/form/user-form";
-interface DashboardLayoutProps {
-  children: React.ReactNode;
-}
-const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
+const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const user = useSelector((state: any) => state?.user?.user);
   const router = useRouter();
   const dispatch = useDispatch();
+
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [totalData, setTotalData] = useState(0);
   const [updates, setUpdates] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isDropdown, setIsOpenDropdown] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const socket = io("http://localhost:8080");
+  const socket = io(process.env.NEXT_PUBLIC_SERVER_URL as string);
+
   React.useEffect(() => {
     const updateProject = (notification, field) => {
+      let message = `Project ${field} is updated to ${notification[field]}`;
       if (field === "approval") {
-        let value = notification[field] ? "Approved" : "Rejected";
-        setUpdates((prevUpdates) => [
-          ...prevUpdates,
-          {
-            id: 1,
-            message: `Project ${field} is  ${value}`,
-            view: false,
-          },
-        ]);
+        message = `Project approval is ${
+          notification[field] ? "Approved" : "Rejected"
+        }`;
+      } else if (field === "active") {
+        message = `Project active is updated to ${
+          notification[field] ? "Active" : "Inactive"
+        }`;
       }
-      if (field === "active") {
-        let value = notification[field] ? "Active" : "Inactive";
-        setUpdates((prevUpdates) => [
-          ...prevUpdates,
-          {
-            id: 1,
-            message: `Project ${field} is updated to ${value}`,
-            view: false,
-          },
-        ]);
-      }
-      if (field != "active" && field != "approval") {
-        setUpdates((prevUpdates) => [
-          ...prevUpdates,
-          {
-            id: 1,
-            message: `Project ${field} is updated to ${notification[field]}`,
-            view: false,
-          },
-        ]);
-      }
+
+      setUpdates((prevUpdates) => [
+        ...prevUpdates,
+        {
+          id: notification.id || Math.random(),
+          message,
+          view: false,
+        },
+      ]);
     };
 
-    // Event listeners
     socket.on("projectStatusUpdate", (notification) =>
       updateProject(notification, "status")
     );
     socket.on("projectApprovalUpdate", (notification) =>
-      updateProject(notification, "approved")
+      updateProject(notification, "approval")
     );
     socket.on("projectActiveUpdate", (notification) =>
       updateProject(notification, "active")
@@ -85,66 +79,104 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
     socket.on("projectCompletionUpdate", (notification) =>
       updateProject(notification, "completion_percentage")
     );
-    // Cleanup on unmount
+
     return () => {
       socket.off("projectStatusUpdate");
       socket.off("projectApprovalUpdate");
       socket.off("projectActiveUpdate");
       socket.off("projectCompletionUpdate");
     };
-  }, [socket]);
+  }, []);
 
-  async function getNotifications() {
-    const notifications: any = await notificationApi.get(user?.sub);
-    let tempState = [];
-    if (notifications) {
-      notifications?.forEach((notification) => {
-        notification.type === "status" &&
-          tempState.push({
+  useEffect(() => {
+    async function fetchNotifications() {
+      setIsLoading(true);
+      const result: any = await notificationApi.get(user?.sub, page, 5);
+      if (!result) return;
+
+      setTotalData(result?.total);
+      const newUpdates = result?.data.map((notification) => {
+        if (notification.type === "status") {
+          return {
             id: notification.id,
             message: `Project status is updated to ${notification.value}`,
             view: true,
-            latest: false,
-          });
-        notification.type === "approval" &&
-          tempState.push({
+          };
+        }
+        if (notification.type === "approval") {
+          return {
             id: notification.id,
-            message: `Project approval is  ${
+            message: `Project approval is ${
               notification.value ? "Approved" : "Rejected"
             }`,
             view: true,
-          });
-        notification.type === "active" &&
-          tempState.push({
+          };
+        }
+        if (notification.type === "active") {
+          return {
             id: notification.id,
             message: `Project active is updated to ${
               notification.value ? "Active" : "Inactive"
             }`,
             view: true,
-          });
+          };
+        }
       });
+
+      setUpdates((prevUpdates) => [...prevUpdates, ...newUpdates]);
+      setIsLoading(false);
+      if (updates.length + newUpdates.length >= result.total) {
+        setHasMore(false);
+      } else {
+        setHasMore(true);
+      }
     }
 
-    setUpdates(tempState);
-  }
-  const handleClick = () => {
-    let tempState = [...updates];
-    tempState.forEach((update) => {
-      update.view = true;
-    });
-    setUpdates(tempState);
-  };
-  useEffect(() => {
-    if (user) {
-      getNotifications();
+    fetchNotifications();
+  }, [page]);
+
+  const handleScroll = debounce((e) => {
+    const target = e.target;
+    const { scrollTop, clientHeight, scrollHeight } = target;
+    if (
+      scrollTop + clientHeight >= scrollHeight - 300 &&
+      updates.length < totalData &&
+      hasMore
+    ) {
+      setPage((prevPage) => prevPage + 1);
     }
+  }, 500);
+
+  useEffect(() => {
+    const container = dropdownRef.current;
+    if (!container) return;
+
+    container.addEventListener("scroll", handleScroll);
+    return () => {
+      container.removeEventListener("scroll", handleScroll);
+    };
+  }, [updates, hasMore]);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+  const handleClick = () => {
+    setUpdates((prevUpdates) =>
+      prevUpdates.map((update) => ({ ...update, view: true }))
+    );
+  };
 
   const hasUnreadNotifications = updates.some((update) => !update.view);
 
   return (
     <>
-      <div className="md:m-12 lg:m-12   font-[family-name:var(--font-redhat)]">
+      <div className="md:m-12 lg:m-12 font-[family-name:var(--font-redhat)]">
         <div className="mt-5 ">
           <div className="md:flex lg:flex ">
             <div>
@@ -155,7 +187,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                 {user?.email}
               </h1>
             </div>
-            <div className=" ml-auto ">
+            <div className="ml-auto ">
               <h1 className="font-semibold text-md">
                 {moment().format("MMMM Do YYYY")}
               </h1>
@@ -163,25 +195,51 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                 {moment().format("dddd")}
               </h1>
               <div className="space-x-4 mt-2 flex justify-end">
-                <DropdownMenu onOpenChange={handleClick}>
+                <div>
                   <div className="relative inline-block">
-                    <DropdownMenuTrigger className="rounded-full  p-2 bg-card border text-black dark:text-white">
+                    <button
+                      onClick={() => setIsOpenDropdown(!isDropdown)}
+                      className="rounded-full p-2 bg-card border text-black dark:text-white"
+                    >
                       <Bell size={20} />
                       {hasUnreadNotifications && (
                         <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
                       )}
-                    </DropdownMenuTrigger>
+                    </button>
+
+                    {/* Dropdown */}
+                    {isDropdown && (
+                      <div
+                        onClick={handleClick}
+                        className="absolute z-10 mt-2 w-[14rem] bg-card p-2 border border-gray-700 rounded-md shadow-lg "
+                        style={{
+                          top: "100%", // Position the dropdown directly below the button
+                          marginTop: "0.5rem", // Add a small gap between the button and the dropdown
+                        }}
+                      >
+                        <div
+                          ref={dropdownRef}
+                          className="max-h-[200px] overflow-y-auto"
+                          onScroll={handleScroll}
+                        >
+                          {updates.map((update, i) => (
+                            <>
+                              <p className="text-sm" key={update.id}>
+                                {update.message}
+                              </p>
+                              <Separator className="mt-2" />
+                            </>
+                          ))}
+                        </div>
+                        {isLoading && (
+                          <div className="p-2 text-center text-sm text-white">
+                            Loading more...
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
-                  <DropdownMenuContent>
-                    {updates.reverse().map((update) => {
-                      return (
-                        <DropdownMenuLabel key={update.id}>
-                          {update?.message}
-                        </DropdownMenuLabel>
-                      );
-                    })}
-                  </DropdownMenuContent>
-                </DropdownMenu>
+                </div>
                 <button
                   onClick={() => {
                     router.push("/auth/signin");
@@ -189,25 +247,23 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                     Cookies.remove("user");
                     dispatch(logout());
                   }}
-                  className="rounded-full  p-2 bg-card border text-black dark:text-white"
+                  className="rounded-full p-2 bg-card border text-black dark:text-white"
                 >
                   <LogOut size={20} />
                 </button>
                 <ThemeSwitcher />
-                <button className="rounded-full p-2 bg-card border text-black dark:text-white">
-                  <Settings
-                    onClick={() => {
-                      setIsOpen(true);
-                    }}
-                    size={20}
-                  />
+                <button
+                  className="rounded-full p-2 bg-card border text-black dark:text-white"
+                  onClick={() => setIsOpen(true)}
+                >
+                  <Settings size={20} />
                 </button>
               </div>
             </div>
           </div>
           <Separator className="mt-5" />
         </div>
-        <>{children}</>
+        {children}
       </div>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent

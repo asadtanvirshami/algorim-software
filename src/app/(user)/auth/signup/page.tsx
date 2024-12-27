@@ -1,5 +1,5 @@
 "use client";
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -17,6 +17,7 @@ import Link from "next/link";
 import { authApi } from "@/service/auth";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
 
 // import { userSignUpRequest } from "@/api/user/user-api";
 
@@ -30,6 +31,7 @@ interface SignUpForm {
 const Auth = () => {
   const { toast } = useToast();
   const router = useRouter();
+  const [isLoading, isSetLoading] = useState(false);
   const [form, setForm] = React.useState<SignUpForm>({
     firstName: "",
     lastName: "",
@@ -39,11 +41,12 @@ const Auth = () => {
 
   const handleSignup = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    isSetLoading(true);
     try {
       const request = await authApi.signup(
         form.firstName,
         form.lastName,
-        form.email,
+        form.email.toLowerCase(),
         form.password
       );
       if (request?.data?.message === "success") {
@@ -53,10 +56,12 @@ const Auth = () => {
           description: "Redirecting to the sign 7in.",
           duration: 800,
         });
+        isSetLoading(false);
         router.push("/auth/signin");
       }
     } catch (error) {
       console.error(error);
+      isSetLoading(false);
       toast({
         variant: "destructive",
         title: "Failed to sign in",
@@ -167,10 +172,14 @@ const Auth = () => {
                   <div className="flex justify-end mt-4">
                     <Button
                       type="submit"
-                      className=" bg-gradient-to-r from-orange-300 to-orange-500 text-white"
+                      disabled={isLoading}
+                      className=" bg-gradient-to-r border-orange-400 from-orange-300 to-orange-500 text-white"
                     >
-                      Continue
-                      <ArrowRightIcon className="ml-2 h-5 w-5" />
+                      Signin{" "}
+                      {!isLoading && (
+                        <ArrowRightIcon className="ml-2 h-5 w-5" />
+                      )}
+                      {isLoading && <Loader2 className=" animate-spin" />}
                     </Button>
                   </div>
                 </form>

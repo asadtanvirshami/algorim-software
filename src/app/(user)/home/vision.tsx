@@ -32,7 +32,7 @@ const Vision = () => {
           <article className="tracking-tight text-justify text-[15px] md:text-xl lg:text-xl">
             The size of your vision is more important than the size of your
             organization. Whether you're a mid-sized business, an enterprise, or
-            somewhere in between, Taazaa is your Goldilocks software partner.
+            somewhere in between, Algorim is your Goldilocks software partner.
             Our iterative, high-empathy design approach reduces risk and ensures
             a software solution that's just right for your business.
           </article>

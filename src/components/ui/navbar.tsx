@@ -115,7 +115,12 @@ function Navbar() {
         </div>
         <div className="relative hidden md:flex md:items-center space-x-2 ">
           <ThemeSwitcher />
-          <Button size="sm" onClick={()=>{router.push("/auth/signin")}}>
+          <Button
+            size="sm"
+            onClick={() => {
+              router.push("/auth/signin");
+            }}
+          >
             Login <LogIn />
           </Button>
           {/* <TryProductsButton open={isOpen} /> */}
@@ -172,9 +177,15 @@ function Navbar() {
         })}
         <div className="relative w-full text-black dark:text-white mt-3">
           <div className="flex justify-center">
-          <Button size="sm" onClick={()=>{router.push("/auth/signin")}}>
-            Login <LogIn />
-          </Button>
+            <Button
+              className=" bg-gradient-to-r border-orange-400 from-orange-300 to-orange-500 text-white"
+              size="sm"
+              onClick={() => {
+                router.push("/auth/signin");
+              }}
+            >
+              Login <LogIn />
+            </Button>
             {/* <TryProductsButton /> */}
           </div>
         </div>

@@ -1,3 +1,4 @@
+import TrustPilot from "@/components/ui/trustpilot";
 import React from "react";
 
 const Testimonials = () => {
@@ -35,7 +36,7 @@ const Testimonials = () => {
           return (
             <div
               key={item.name}
-              className="border font-[family-name:var(--font-redhat)] bg-white  flex-col space-y-3 dark:bg-card p-3 rounded-md"
+              className="border shadow-lg font-[family-name:var(--font-redhat)] bg-white  flex-col space-y-3 dark:bg-card p-3 rounded-md"
             >
               <h2 className="font-semibold text-xl dark:text-orange-300">{item.name}</h2>
               <article>{item.customer}</article>
@@ -44,6 +45,7 @@ const Testimonials = () => {
           );
         })}
       </div>
+      <TrustPilot/>
     </div>
   );
 };

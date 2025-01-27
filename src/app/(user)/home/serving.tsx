@@ -25,9 +25,9 @@ const Serving = () => {
       <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 justify-stretch w-full ">
         <div className="font-[family-name:var(--font-redhat)]">
           <h1 className="w-full font-semibold text-3xl md:text-5xl lg:text-6xl">
-            Serving companies of all sizes, worldwide.
+            Serving companies of all sizes, <strong className="font-[family-name:var(--font-redhat-extra)]">worldwide</strong>.
           </h1>
-          <article className="tracking-tight text-justify text-[15px] md:text-xl lg:text-xl">
+          <article className="tracking-tight bg-white mt-8 text-justify text-[15px] md:text-xl lg:text-xl">
             Not only do we help our clients build and scale their software
             products, we also help them build and grow their businesses.
           </article>
@@ -37,13 +37,13 @@ const Serving = () => {
                 return (
                   <div
                     key={item.title}
-                    className="border  mt-4 font-[family-name:var(--font-redhat)] flex-col bg-zinc-900 dark:bg-card  p-3 h-fit rounded-md"
+                    className="border mt-4 font-[family-name:var(--font-redhat)] flex-col bg-white shadow-lg text-darkGray  p-3 h-fit rounded-md"
                   >
                     {item.icon}
-                    <h2 className="font-semibold text-xl text-orange-300">
+                    <h2 className="font-[family-name:var(--font-redhat-semi)] text-xl">
                       {item.title}
                     </h2>
-                    <article className="text-white">{item.description}</article>
+                    <article >{item.description}</article>
                   </div>
                 );
               })}

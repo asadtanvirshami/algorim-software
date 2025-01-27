@@ -5,22 +5,22 @@ import revenueApp from "@/assets/lottie/Revenue-App-(Dribbble-shot)-[remix].json
 const Process = () => {
   const productProcess = [
     {
-      title: "Product Discovery",
+      title: "1. Product Discovery",
       description:
         "Before turning concepts into code, our process begins by deeply understanding and balancing what is truly valuable to the business and the user.",
     },
     {
-      title: "Experience Design",
+      title: "2. Experience Design",
       description:
         "UX/UI design improves customer satisfaction by making every interaction easy, effective, and enjoyable. We build high-performing user interfaces, based on a deep understanding of your customers’ needs and wants.",
     },
     {
-      title: "Product Engineering",
+      title: "3. Product Engineering",
       description:
         "Scalable software architecture results in future-ready products. It gives you an edge over your competitors. We use the latest tech innovations, enabling clients to solve complex business challenges.",
     },
     {
-      title: "Product Launch",
+      title: "4. Product Launch",
       description:
         "The sooner we can test the product in the hands of real users, the better. We work toward a rapid launch and follow with frequent iterative releases.",
     },
@@ -34,19 +34,19 @@ const Process = () => {
         </div>
         <div className="font-[family-name:var(--font-redhat)]">
           <div className="gap-4">
-            <h1 className="w-full font-semibold text-3xl text-center md:text-5xl lg:text-5xl">
+            <h1 className="w-full font-[family-name:var(--font-redhat-semi)] text-3xl text-center md:text-5xl lg:text-5xl">
               Product Development Lifecycle
             </h1>
-            <ol className="bg-zinc-900 dark:bg-card mt-4 w-full p float-start rounded-xl px-5 py-5 shadow-md order-1 lg:order-none">
+            <ol className="bg-white mt-4 w-full p float-start rounded-xl px-5 py-5 shadow-md order-1 lg:order-none">
               {productProcess.map((item) => (
                 <div key={item.title} className="mt-4 flex items-start p-1 ">
                   {/* Icon */}
                   <div className="ml-4">
-                    <li className="text-xl text-orange-300 list-none">
+                    <li className="text-xl font-[family-name:var(--font-redhat-semi)] list-none">
                       {item.title}
                     </li>{" "}
                     {/* Title */}
-                    <li className="w-full text-white text-[15px] md:text-[16px] lg:text-[18px] md:w-full lg:w-full text-justify tracking-tight list-none">
+                    <li className="w-full text-[15px] md:text-[16px] lg:text-[16px] md:w-full lg:w-full text-justify tracking-tight list-none">
                       {item.description}
                     </li>{" "}
                     {/* Description */}

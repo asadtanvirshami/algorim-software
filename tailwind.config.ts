@@ -15,7 +15,20 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        "monochrome-dark":
+          "linear-gradient(to bottom, #121212, #1E1E1E, #252525)",
+        "monochrome-light":
+          "linear-gradient(to bottom, #F5F5F5, #E0E0E0, #CFCFCF)",
+        "monochrome-radial":
+          "radial-gradient(circle, #121212, #1E1E1E, #252525)",
+      },
       colors: {
+        dark: "#121212",
+        professional:"#222222",
+        grayish: "#1E1E1E",
+        lightgray: "#252525",
+        purewhite: "#FFFFFF",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         darkGray: "#1a1a1a", // Dark gray color

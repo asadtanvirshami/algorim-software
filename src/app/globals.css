@@ -18,10 +18,23 @@
 
 /* Light Theme (default) */
 html.light {
-  --bg-color: #ffffff;
+  /* --bg-color: #ffffff;
   --text-color: #000000;
   --button-bg: #f0f0f0;
-  --button-text: #333333;
+  --button-text: #333333; */
+  /* --bg-color: #ffffff;
+  --text-color: #000000;
+  --button-bg: #f0f0f0;
+  --button-text: #333333; */
+  --dot-bg: white;
+  --dot-color: rgb(83, 83, 83);
+  --dot-size: 1px;
+  --dot-space: 22px;
+  background:
+    linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 10%) center / var(--dot-space) var(--dot-space),
+    linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 10%) center / var(--dot-space) var(--dot-space),
+    var(--dot-color);
+
 }
 
 /* Dark Theme */
@@ -30,7 +43,8 @@ html.dark {
   --text-color: #ffffff;
   --button-bg: #333333;
   --button-text: #f0f0f0;
-  background: radial-gradient(circle, #070707 100%, #000000 100%); /* Radial gradient for dark theme */
+  background: radial-gradient(circle, #070707 100%, #000000 100%);
+  /* Radial gradient for dark theme */
   background-repeat: no-repeat;
 }
 
@@ -38,6 +52,14 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   font-family: Arial, Helvetica, sans-serif;
+  --dot-bg: white;
+  --dot-color: rgb(83, 83, 83);
+  --dot-size: 1px;
+  --dot-space: 22px;
+  background:
+    linear-gradient(90deg, var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 10%) center / var(--dot-space) var(--dot-space),
+    linear-gradient(var(--dot-bg) calc(var(--dot-space) - var(--dot-size)), transparent 10%) center / var(--dot-space) var(--dot-space),
+    var(--dot-color);
 }
 
 @layer utilities {
@@ -141,7 +163,7 @@ body {
 ::-webkit-scrollbar-thumb {
   background-color: #888;
   /* Set the color of the thumb */
-  display: none; 
+  display: none;
   border-radius: 4px;
   /* Set the border radius of the thumb */
 }
@@ -154,9 +176,12 @@ body {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
+
 /*======= Scroller Css======*/
 ::-webkit-scrollbar {
   height: 4px;
@@ -164,23 +189,25 @@ body {
   border: 1px solid #d5d5d5;
   display: none;
 }
-  /* Track */
-  ::-webkit-scrollbar-track {
-    border-radius: 10px;
-    display: none;
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: silver; 
-    border-radius: 10px;
-    display: none;
-  }
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  display: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: silver;
+  border-radius: 10px;
+  display: none;
+}
 
 @keyframes shimmer {
   0% {
     background-position: -200% 0;
   }
+
   100% {
     background-position: 200% 0;
   }
@@ -193,11 +220,9 @@ body {
   color: #000;
 }
 
-.shimmer:hover{
-  background: linear-gradient(90deg, #ff7f50 25%, #ff6347 50%, #ff7f50 75%); 
+.shimmer:hover {
+  background: linear-gradient(90deg, #ff7f50 25%, #ff6347 50%, #ff7f50 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite linear;
   color: #ffff;
 }
-
-

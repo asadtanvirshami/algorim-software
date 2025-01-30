@@ -47,6 +47,7 @@ const Footer = () => {
           </Link>
         </ul>
         <ul className="text-sm">
+          <li>{"+1 (929) 6527654"}</li>
           <li>Dubai, Street mein Ghoroob, mirdif</li>
           <li>info@algorimsoftware.io</li>
           <li>careers@algorimsoftware.io</li>

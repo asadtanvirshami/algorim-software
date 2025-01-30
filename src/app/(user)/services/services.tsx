@@ -116,7 +116,7 @@ const Services =(() => {
       <h1 className="font-semibold text-3xl md:text-4xl lg:text-5xl lg:w-[50rem]">
         We deliver the services you need, with the <strong className=" font-[family-name:var(--font-redhat-extra)] ">quality you deserve</strong>.
       </h1>
-      <article className="tracking-tight text-justify text-[15px] md:text-2xl lg:text-2xl w-fit">
+      <article className="bg-white border tracking-tight text-justify text-[15px] md:text-2xl lg:text-2xl w-fit">
         Whether you're looking for a cutting-edge cloud solution, decentralized
         technology, AI, cybersecurity or a reinvented user experience, we're your all-in-one
         innovation partner.

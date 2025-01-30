@@ -16,12 +16,12 @@ const Hero = () => {
               ALGORIM
             </h1>
             <h1 className=" font-[family-name:var(--font-redhat)] text-center dark:text-white text-xl font-bold  md:text-5xl lg:text-4xl">
-              Create-Consult-Comply
+              CONSULT-CREATE-COMPLY
             </h1>
           </div>
         </div>
         <div className="mb-32 grid text-center">
-          <article className="text-justify font-[family-name:var(--font-redhat)]">
+          <article className="text-justify bg-white text-xl font-[family-name:var(--font-redhat)]">
             At Algorim, we believe in the power of innovation to drive
             meaningful change. We’re passionate about building technology that
             not only meets today’s needs but also anticipates the possibilities

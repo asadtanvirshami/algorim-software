@@ -15,7 +15,7 @@ const WhyUs = () => {
             </strong>{" "}
             as your trusted technology partner
           </h1>
-          <article className="text-justify tracking-tight">
+          <article className="text-justify bg-white tracking-tight">
             At Algorim, our primary focus is on understanding and fulfilling
             your unique requirements. We’re not just delivering solutions; we’re
             committed to exceeding your expectations by building systems that

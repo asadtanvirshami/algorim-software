@@ -65,18 +65,18 @@ const Projects = ({ initialPage, initialPageSize }: Props) => {
   if (isLoading || !data) {
     return (
       <div className="flex justify-center mt-5 gap-4 h-screen ">
-        <Loader2 className="h-96 animate-spin" color="orange" />
+        <Loader2 className="h-96 animate-spin" color="blue" />
       </div>
     );
   }
 
   return (
     <React.Fragment>
-      <div className="h-screen">
+      <div className="h-screen bg-white">
         <div className="flex justify-end m-5">
           <Button
             onClick={() => setIsOpen((prev) => !prev)}
-            className="bg-gradient-to-r from-orange-400 to-orange-500 text-white font-semibold"
+            className="bg-gradient-to-r from-blue-400 to-blue-500 text-white font-semibold"
           >
             Start Project <PlusCircle />
           </Button>

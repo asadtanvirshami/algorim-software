@@ -15,18 +15,11 @@ import UserForm from "@/app/(user)/protected-route/dashboard/projects-section/fo
 import ThemeSwitcher from "./theme-switch";
 import { Separator } from "./separator";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Button } from "./button";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const user = useSelector((state: any) => state?.user?.user);
@@ -176,14 +169,14 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <>
-      <div className="md:m-12 lg:m-12 font-[family-name:var(--font-redhat)]">
+      <div className="bg-white md:m-12 lg:m-12 font-[family-name:var(--font-redhat)]">
         <div className="mt-5 ">
           <div className="md:flex lg:flex ">
             <div>
               <h1 className="font-bold capitalize text-lg">
                 Welcome, {user?.firstName + user?.lastName || ""}
               </h1>
-              <h1 className="font-semibold text-xl text-orange-200">
+              <h1 className="font-semibold text-xl text-darkGray">
                 {user?.email}
               </h1>
             </div>
@@ -213,8 +206,8 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
                         onClick={handleClick}
                         className="absolute z-10 mt-2 w-[14rem] bg-card p-2 border border-gray-700 rounded-md shadow-lg "
                         style={{
-                          top: "100%", // Position the dropdown directly below the button
-                          marginTop: "0.5rem", // Add a small gap between the button and the dropdown
+                          top: "100%", 
+                          marginTop: "0.5rem", 
                         }}
                       >
                         <div

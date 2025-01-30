@@ -5,13 +5,23 @@ import { useQuery } from "@tanstack/react-query";
 import DetailSection from "./detail-section";
 import InfoSection from "./info-section";
 import MilestoneSection from "./milestone-section";
+import { Loader2 } from "lucide-react";
 
 const Project = ({ id }: { id: string }) => {
-
   const { data: project, isLoading, error } = useProject(id);
 
-  if (isLoading) return <p>Loading project...</p>;
-  if (error) return <p>Failed to load project. Please try again later.</p>;
+  if (isLoading)
+    return (
+      <div className="flex justify-center mt-5 gap-4 h-screen ">
+        <Loader2 className="h-96 animate-spin" color="blue" />
+      </div>
+    );
+  if (error)
+    return (
+      <div className="flex justify-center mt-5 gap-4 h-screen ">
+        <p>Failed to load project. Please try again later.</p>;
+      </div>
+    );
 
   return (
     <div className=" p-12 flex justify-center font-[family-name:var(--font-redhat)]">

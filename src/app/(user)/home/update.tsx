@@ -25,9 +25,9 @@ const Update = () => {
         <Lottie className="h-[300px] md:h-[500px]" animationData={pushMob} loop={true} />
         <div className="font-[family-name:var(--font-redhat)]">
           <h1 className="w-full font-semibold text-3xl md:text-5xl lg:text-6xl">
-            It's important for you to know what's new
+            It's important for you to know <strong className="font-[family-name:var(--font-redhat-extra)]">what's new</strong>
           </h1>
-          <article className="tracking-tight text-justify text-[15px] md:text-xl lg:text-xl">
+          <article className="bg-white tracking-tight mt-6 text-justify text-[15px] md:text-xl lg:text-xl">
             From the start to finish, we'll update you on what's new. Either
             it's the features, the design, or the code. We make sure that we are
             in touch with you.
@@ -37,7 +37,7 @@ const Update = () => {
               {Icons.map((item, index: number) => (
                 <div
                   key={index}
-                  className="border bg-zinc-900 dark:bg-card mt-4 font-[family-name:var(--font-redhat)] flex-col p-3 h-fit rounded-md"
+                  className="border bg-white shadow-lg mt-4 font-[family-name:var(--font-redhat)] flex-col p-3 h-fit rounded-md"
                 >
                   <Image src={item.icon} alt="icons" />
                 </div>

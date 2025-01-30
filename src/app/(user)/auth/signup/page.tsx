@@ -89,7 +89,7 @@ const Auth = () => {
           <div className=" justify-center align-middle">
             <Card className="w-[350px]">
               <CardHeader>
-                <CardTitle className="text-3xl">Signin</CardTitle>
+                <CardTitle className="text-3xl">Sign Up</CardTitle>
                 <CardDescription>
                   Enter your account credentials to signin.
                 </CardDescription>
@@ -165,7 +165,7 @@ const Auth = () => {
                   </div>
                   <div className="text-sm mt-4">
                     Already have an account?{" "}
-                    <Link href={"/auth/signin"} className="text-orange-500">
+                    <Link href={"/auth/signin"} className="text-blue-500">
                       Signin here.
                     </Link>
                   </div>
@@ -173,7 +173,7 @@ const Auth = () => {
                     <Button
                       type="submit"
                       disabled={isLoading}
-                      className=" bg-gradient-to-r border-orange-400 from-orange-300 to-orange-500 text-white"
+                      className="border-darkGray bg-darkGray text-white"
                     >
                       Signin{" "}
                       {!isLoading && (

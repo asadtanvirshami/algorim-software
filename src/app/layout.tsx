@@ -25,6 +25,18 @@ const redhat = localFont({
   variable: "--font-redhat",
 });
 
+const redhatsemibold = localFont({
+  src: "./fonts/RedHatDisplay-SemiBold.ttf",
+  weight: "100 900",
+  variable: "--font-redhat-semi",
+});
+
+const redhatextrabold = localFont({
+  src: "./fonts/RedHatDisplay-ExtraBold.ttf",
+  weight: "100 900",
+  variable: "--font-redhat-extra",
+});
+
 export const metadata: Metadata = {
   title: "Algorim - Blockchain & AI Solutions",
   description:
@@ -95,9 +107,9 @@ export default function RootLayout({
         />
       </Head>
       <body
-        className={`${geistSans.variable} ${redhat.variable} ${revamped.variable} antialiased`}
+        className={`${geistSans.variable} ${redhat.variable} ${redhatsemibold.variable} ${redhatextrabold.variable} ${revamped.variable} antialiased`}
       >
-        <ReactQueryClientProvider >
+        <ReactQueryClientProvider>
           <StoreProvider>{children}</StoreProvider>
         </ReactQueryClientProvider>
         <Toaster />

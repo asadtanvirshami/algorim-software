@@ -48,7 +48,7 @@ const NavLink: React.FC<NavLinkProps> = ({ name, href }) => {
   return (
     <Link
       href={href}
-      className="text-md font-[family-name:var(--font-redhat)] text-black dark:text-white hover:text-orange-300 dark:hover:text-orange-300 transition duration-150 ease-in-out"
+      className="text-md font-[family-name:var(--font-redhat)] bg-white text-black p-1 dark:text-white hover:border hover:p-1 hover:rounded-md transition duration-150 ease-in-out"
     >
       {name}
     </Link>
@@ -114,7 +114,7 @@ function Navbar() {
           })}
         </div>
         <div className="relative hidden md:flex md:items-center space-x-2 ">
-          <ThemeSwitcher />
+          {/* <ThemeSwitcher /> */}
           <Button
             size="sm"
             onClick={() => {
@@ -144,14 +144,14 @@ function Navbar() {
           )}
         </div>
         <div className="-mr-2 flex items-center md:hidden space-x-2">
-          <ThemeSwitcher />
+          {/* <ThemeSwitcher /> */}
           <Button
             type="button"
             onClick={() => toogle()}
             id="main-menu"
             aria-label="Main menu"
             aria-haspopup="true"
-            className="inline-flex items-center justify-center p-2 rounded-md text-black dark:text-orange-300 dark:bg-black bg-gray-100 hover:bg-gray-100 border focus:outline-none "
+            className="inline-flex items-center justify-center p-2 rounded-md text-black bg-gray-100 hover:bg-gray-100 border focus:outline-none "
           >
             <Menu />
           </Button>

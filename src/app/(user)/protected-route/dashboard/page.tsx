@@ -44,7 +44,7 @@ async function page() {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full h-full bg-white">
       <HydrationBoundary state={dehydrate(queryClient)}>
         <DashboardLayout>
           <Projects initialPage={1} initialPageSize={8} />

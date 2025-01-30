@@ -32,7 +32,6 @@ async function page({ params }: { params: { id: string } }) {
   if (token) {
     try {
       const session = await authApi.verfication(token.value);
-      console.log(session, "SESSION");
       if (session.status !== 200) {
         redirect("/auth/signin");
         return;

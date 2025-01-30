@@ -4,8 +4,8 @@ import { Progress } from "./progress";
 import { Button } from "./button";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { Badge } from "./badge";
-import { getColor } from "@/utils/get-color";
 import Link from "next/link";
+import { Separator } from "./separator";
 
 const ProjectCard = ({ data }: any) => {
   return (
@@ -21,7 +21,8 @@ const ProjectCard = ({ data }: any) => {
         </div>
         <Badge>{data?.serial_number || ""}</Badge>
       </CardHeader>
-      <CardContent className="space-y-5">
+      <Separator></Separator>
+      <CardContent className="space-y-5 mt-4">
         <dl className="text-sm">
           {data?.description
             ? `${data.description.slice(0, 100)}${
@@ -31,13 +32,17 @@ const ProjectCard = ({ data }: any) => {
         </dl>
         <span className="flex items-center gap-2 text-sm">
           <label>Approval:</label>
-          <Badge variant={data?.approved ? "green_gradient" : "red_gradient"}>
+          <Badge
+            className="text-white"
+            variant={data?.approved ? "green_gradient" : "red_gradient"}
+          >
             {data?.approved ? "Approved" : "Un approved"}
           </Badge>
         </span>
         <span className="flex items-center gap-2 text-sm">
           <label>Status:</label>
           <Badge
+            className="text-white"
             variant={
               data?.status === "in progress" ? "aqua_gradient" : "aqua_gradient"
             }
@@ -48,10 +53,8 @@ const ProjectCard = ({ data }: any) => {
       </CardContent>
 
       <div className="flex justify-end p-4">
-        <Button variant="outline" className="bg-blue-500">
-          <Link href={`/protected-route/project/${data?.id}`}>
-            View Info
-          </Link>
+        <Button variant="outline" className="bg-blue-500 text-white">
+          <Link href={`/protected-route/project/${data?.id}`}>View Info</Link>
           <ArrowTopRightIcon />
         </Button>
       </div>

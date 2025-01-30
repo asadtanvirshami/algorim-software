@@ -37,7 +37,7 @@ export const GlobeModel = () => {
     []
   );
 
-  const colors = React.useMemo(() => ["#e3a44b", "#e3a44b", "#e3a44b"], []);
+  const colors = React.useMemo(() => ["#42c6ff", "#42c6ff", "#42c6ff"], []);
 
   // Pre-generate arcs data to avoid re-calculating on each render
   const generateArcs = React.useMemo(() => {

@@ -3,11 +3,11 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col border-t-black border p-5 justify-center items-center mt-20 font-[family-name:var(--font-redhat)]">
+    <footer className="flex flex-col bg-white p-5 justify-center items-center mt-20 font-[family-name:var(--font-redhat)]">
       <div className="grid grid-cols-1 align-middle text-center container justify-center gap-5 md:grid-cols-3 lg:grid-cols-4 ">
         <div>
-          <h1 className="text-xl font-bold">About</h1>
-          <article className=" text-justify text-sm tracking-tighter">
+          <h1 className="text-xl  font-[family-name:var(--font-redhat-semi)] ">About</h1>
+          <article className=" text-justify text-sm tracking-tight text-gray-600">
             Algorim is an innovative IT company specializing in cutting-edge
             solutions across blockchain, artificial intelligence, cybersecurity,
             and full-stack development. Our team is dedicated to transforming
@@ -20,7 +20,7 @@ const Footer = () => {
             <Link href={"/"}>Home</Link>
           </li>
           <li>
-            <Link href={"/landing/about"}>About Us</Link>
+            <Link href={"/landing/about"} >About Us</Link>
           </li>
           <li>
             <Link href={"/landing/services"}>Services</Link>
@@ -47,6 +47,7 @@ const Footer = () => {
           </Link>
         </ul>
         <ul className="text-sm">
+          <li>{"+1 (929) 6527654"}</li>
           <li>Dubai, Street mein Ghoroob, mirdif</li>
           <li>info@algorimsoftware.io</li>
           <li>careers@algorimsoftware.io</li>

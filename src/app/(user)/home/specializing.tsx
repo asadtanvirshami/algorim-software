@@ -45,20 +45,20 @@ const Specializing = () => {
   return (
     <div className="space-y-12 font-[family-name:var(--font-redhat)]">
       <h1 className="w-full font-semibold text-3xl md:text-4xl lg:text-4xl text-center">
-        Utilizing blockchain & AI technology in multiple Industries
+        Utilizing blockchain, cybersecurity & AI technology in multiple Industries
       </h1>
       <div className="gap-2 grid grid-cols-1 md:grid-cols-3  lg:grid-cols-5 w-full  justify-center items-center ">
         {Industries.map((item) => {
           return (
             <div
               key={item.title}
-              className="border font-[family-name:var(--font-redhat)] text-orange-300 space-y-2 p-3  bg-zinc-900 dark:bg-card   rounded-md"
+              className="border font-[family-name:var(--font-redhat)] text-darkGray space-y-2 p-3 shadow-lg bg-white rounded-md"
             >
               {item.icon}
-              <h2 className="font-semibold text-xl text-orange-300">
+              <h2 className=" font-[family-name:var(--font-redhat-semi)] text-xl">
                 {item.title}
               </h2>
-              <article className="text-white">{item.description}</article>
+              <article>{item.description}</article>
             </div>
           );
         })}

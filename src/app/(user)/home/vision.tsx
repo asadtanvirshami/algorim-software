@@ -26,7 +26,14 @@ const Vision = () => {
     <div className="space-y-12">
       <div className="space-y-4 md:space-y-0 lg:space-y-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 p-2 w-full flex-row font-[family-name:var(--font-redhat)]">
         <h1 className="w-full font-semibold text-3xl md:text-5xl lg:text-6xl">
-          You bring the <strong className="font-[family-name:var(--font-redhat-extra)]">vision</strong>, we bring the <strong className=" font-[family-name:var(--font-redhat-extra)] " >spark.</strong>
+          You bring the{" "}
+          <strong className="font-[family-name:var(--font-redhat-extra)]">
+            vision
+          </strong>
+          , we bring the{" "}
+          <strong className=" font-[family-name:var(--font-redhat-extra)] ">
+            spark.
+          </strong>
         </h1>
         <div className="space-y-5">
           <article className="tracking-tight bg-white text-justify text-[15px] md:text-xl lg:text-xl">
@@ -37,9 +44,9 @@ const Vision = () => {
             a software solution that's just right for your business.
           </article>
           <Button className=" bg-professional">
-            <Link href="/auth/signin">
-              Learn More About Our Streamline Process
-            </Link>
+            {/* <Link href="/auth/signin"> */}
+            Learn More About Our Streamline Process
+            {/* </Link> */}
           </Button>
         </div>
       </div>
